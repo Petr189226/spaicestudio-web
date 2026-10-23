@@ -18,13 +18,13 @@ Weby jsou dva, každý ve vlastním repozitáři, protože GitHub Pages umí jen
 
 | Repozitář | Složka | Doména |
 |---|---|---|
-| `spaicestudio-web` | tato složka | `spaicestudio.cz` (a `www`) |
-| `cookpit-web` | `cookpit/` | `cookpit.spaicestudio.cz` |
+| [`spaicestudio-web`](https://github.com/Petr189226/spaicestudio-web) | tato složka | `spaicestudio.cz` (a `www`) |
+| [`cookpit-web`](https://github.com/Petr189226/cookpit-web) | `cookpit/` | `cookpit.spaicestudio.cz` |
 
 Soubor `CNAME` s doménou a prázdný `.nojekyll` jsou v obou repozitářích připravené.
 
-1. Na GitHubu vytvoř oba repozitáře jako veřejné (Pages pro soukromé repozitáře chce placený účet) a nahraj do nich větev `main`.
-2. V každém repozitáři: **Settings → Pages → Build and deployment**, zdroj **Deploy from a branch**, větev `main`, složka `/ (root)`. Doména se načte ze souboru `CNAME`.
+1. Repozitáře jsou na účtu `Petr189226`, veřejné (Pages pro soukromé repozitáře chce placený účet). Každý push do `main` web znovu nasadí.
+2. Pages jsou zapnuté: **Settings → Pages**, zdroj **Deploy from a branch**, větev `main`, složka `/ (root)`. Doména se načte ze souboru `CNAME`.
 3. V Cloudflare (**DNS → Records**) přidej záznamy. Proxy nech vypnutou (šedý mráček), jinak GitHub nevydá certifikát:
 
    | Typ | Název | Hodnota |
@@ -37,11 +37,11 @@ Soubor `CNAME` s doménou a prázdný `.nojekyll` jsou v obou repozitářích p�
    | AAAA | `@` | `2606:50c0:8001::153` |
    | AAAA | `@` | `2606:50c0:8002::153` |
    | AAAA | `@` | `2606:50c0:8003::153` |
-   | CNAME | `www` | `<účet>.github.io` |
-   | CNAME | `cookpit` | `<účet>.github.io` |
+   | CNAME | `www` | `petr189226.github.io` |
+   | CNAME | `cookpit` | `petr189226.github.io` |
 
 4. Až GitHub v **Settings → Pages** ukáže, že DNS sedí a certifikát je vydaný, zapni **Enforce HTTPS**.
-5. Doménu si na GitHubu ověř (**Settings účtu → Pages → Add a domain**, TXT záznam `_github-pages-challenge-<účet>` v Cloudflare). Nikdo jiný ji pak nepřipojí ke svému repozitáři.
+5. Doménu si na GitHubu ověř (**Settings účtu → Pages → Add a domain**, TXT záznam `_github-pages-challenge-petr189226` v Cloudflare). Nikdo jiný ji pak nepřipojí ke svému repozitáři.
 
 Další web na subdoméně (například pro další aplikaci) funguje stejně: vlastní repozitář, soubor `CNAME` se subdoménou a záznam CNAME v Cloudflare.
 
