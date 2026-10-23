@@ -8,42 +8,34 @@ Statický web studia spaice. Bez buildu: co je v repozitáři, to se nasadí.
 | `prace/<projekt>/` | stránky projektů s vlastním náhledem odkazu (MojeTripy, Cookpit, Gentlemen's Garage, J&J Barber Shop) |
 | `assets/` | styly, skript, písmo Archivo, obrázky (`share*.jpg` jsou náhledy odkazů 1200 × 630) |
 | `404.html` | stránka pro neexistující adresy |
+| `Dockerfile`, `Caddyfile` | nasazení na Railway (viz níže) |
 | `tools/projekty.py` | vygeneruje `prace/*/index.html`. Hlavička a patička jsou stejné jako v `index.html`, po jejich změně skript pusť znovu. |
 
 Lokální náhled: `python3 -m http.server 4321` a otevřít http://localhost:4321.
 
-## Nasazení na GitHub Pages
+## Nasazení na Railway
 
-Weby jsou dva, každý ve vlastním repozitáři, protože GitHub Pages umí jen jednu doménu na repozitář:
+Weby běží na Railway v projektu **spaicestudio.cz** (workspace petr189226), stejně jako ostatní weby: `Dockerfile` zabalí soubory do Caddy, `Caddyfile` řeší hlavičky, cache, přesměrování z `www` a stránku 404. TLS vydává Railway.
 
-| Repozitář | Složka | Doména |
+| Služba | Repozitář | Doména |
 |---|---|---|
-| [`spaicestudio-web`](https://github.com/Petr189226/spaicestudio-web) | tato složka | `spaicestudio.cz` (a `www`) |
-| [`cookpit-web`](https://github.com/Petr189226/cookpit-web) | `cookpit/` | `cookpit.spaicestudio.cz` |
+| `web` | [`spaicestudio-web`](https://github.com/Petr189226/spaicestudio-web) (tato složka) | `spaicestudio.cz`, `www` přesměruje bez `www` |
+| `cookpit` | [`cookpit-web`](https://github.com/Petr189226/cookpit-web) (`cookpit/`) | `cookpit.spaicestudio.cz` |
 
-Soubor `CNAME` s doménou a prázdný `.nojekyll` jsou v obou repozitářích připravené.
+Každý push do `main` web znovu nasadí. Do obrazu jdou jen soubory, které Git sleduje (viz `.gitignore`).
 
-1. Repozitáře jsou na účtu `Petr189226`, veřejné (Pages pro soukromé repozitáře chce placený účet). Každý push do `main` web znovu nasadí.
-2. Pages jsou zapnuté: **Settings → Pages**, zdroj **Deploy from a branch**, větev `main`, složka `/ (root)`. Doména se načte ze souboru `CNAME`.
-3. V Cloudflare (**DNS → Records**) přidej záznamy. Proxy nech vypnutou (šedý mráček), jinak GitHub nevydá certifikát:
+DNS v Cloudflare (proxy vypnutá, šedý mráček):
 
-   | Typ | Název | Hodnota |
-   |---|---|---|
-   | A | `@` | `185.199.108.153` |
-   | A | `@` | `185.199.109.153` |
-   | A | `@` | `185.199.110.153` |
-   | A | `@` | `185.199.111.153` |
-   | AAAA | `@` | `2606:50c0:8000::153` |
-   | AAAA | `@` | `2606:50c0:8001::153` |
-   | AAAA | `@` | `2606:50c0:8002::153` |
-   | AAAA | `@` | `2606:50c0:8003::153` |
-   | CNAME | `www` | `petr189226.github.io` |
-   | CNAME | `cookpit` | `petr189226.github.io` |
+| Typ | Název | Hodnota |
+|---|---|---|
+| CNAME | `@` | `qh3v3syj.up.railway.app` |
+| CNAME | `www` | `wbafm7t1.up.railway.app` |
+| CNAME | `cookpit` | `zju3p94e.up.railway.app` |
+| TXT | `_railway-verify`, `_railway-verify.www`, `_railway-verify.cookpit` | ověřovací hodnoty z Railway (`railway domain status <doména>`) |
 
-4. Až GitHub v **Settings → Pages** ukáže, že DNS sedí a certifikát je vydaný, zapni **Enforce HTTPS**.
-5. Doménu si na GitHubu ověř (**Settings účtu → Pages → Add a domain**, TXT záznam `_github-pages-challenge-petr189226` v Cloudflare). Nikdo jiný ji pak nepřipojí ke svému repozitáři.
+Další web na subdoméně (například pro další aplikaci): nová služba v tomtéž projektu (`railway add --service <název> --repo Petr189226/<repo>`), vlastní `Dockerfile` a `Caddyfile` jako u Cookpitu, `railway domain <subdoména> --service <název>` a záznamy CNAME a TXT v Cloudflare.
 
-Další web na subdoméně (například pro další aplikaci) funguje stejně: vlastní repozitář, soubor `CNAME` se subdoménou a záznam CNAME v Cloudflare.
+Lokálně stejně jako na Railway: `docker build -t spaice . && docker run -e PORT=8080 -p 8080:8080 spaice`.
 
 ## E-maily
 
