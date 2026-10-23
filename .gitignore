@@ -2,8 +2,6 @@
 # Ostatní složky (cookpit, podklady pro GPT, další weby) mají vlastní repozitáře nebo se nenasazují.
 /*
 !/.gitignore
-!/.nojekyll
-!/CNAME
 !/README.md
 !/404.html
 !/index.html

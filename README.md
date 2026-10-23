@@ -24,14 +24,17 @@ Weby běží na Railway v projektu **spaicestudio.cz** (workspace petr189226), s
 
 Každý push do `main` web znovu nasadí. Do obrazu jdou jen soubory, které Git sleduje (viz `.gitignore`).
 
-DNS v Cloudflare (proxy vypnutá, šedý mráček):
+DNS v Cloudflare. Proxy je zapnutá (oranžový mráček): HTTPS obsluhuje certifikát Cloudflare pro `spaicestudio.cz` a `*.spaicestudio.cz` a režim SSL je „Full“, takže se Cloudflare k Railway připojí i bez certifikátu Railway. Railway vlastní certifikáty kvůli limitu Let's Encrypt z doby přepínání nevydal. Proxy tomu nevadí, pro jistotu ho nevypínej, dokud Railway u domén neukáže platný certifikát.
 
 | Typ | Název | Hodnota |
 |---|---|---|
-| CNAME | `@` | `qh3v3syj.up.railway.app` |
-| CNAME | `www` | `wbafm7t1.up.railway.app` |
-| CNAME | `cookpit` | `zju3p94e.up.railway.app` |
-| TXT | `_railway-verify`, `_railway-verify.www`, `_railway-verify.cookpit` | ověřovací hodnoty z Railway (`railway domain status <doména>`) |
+| CNAME | `@` | `xxkevzaz.up.railway.app` |
+| CNAME | `www` | `owxgc4py.up.railway.app` |
+| CNAME | `cookpit` | `gz535m8r.up.railway.app` |
+| CNAME | `jetopodvod` | `tk99qy3v.up.railway.app` |
+| TXT | `_railway-verify`, `_railway-verify.www`, `_railway-verify.cookpit`, `_railway-verify.jetopodvod` | ověřovací hodnoty z Railway (`railway domain status <doména>`) |
+
+Cíle CNAME přiděluje Railway při přidání domény; když doménu v Railway smažeš a přidáš znovu, cíl se změní a záznam je potřeba přepsat.
 
 Další web na subdoméně (například pro další aplikaci): nová služba v tomtéž projektu (`railway add --service <název> --repo Petr189226/<repo>`), vlastní `Dockerfile` a `Caddyfile` jako u Cookpitu, `railway domain <subdoména> --service <název>` a záznamy CNAME a TXT v Cloudflare.
 
