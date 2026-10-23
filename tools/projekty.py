@@ -30,7 +30,7 @@ PROJECTS = [
         'alt': 'Telefon s aplikací MojeTripy na zídce nad Lisabonem. Nápis: MojeTripy, vlastní aplikace pro iPhone, hodnocení 5,0 v App Storu.',
         'focus': '.7', 'focus_y': '.51', 'interval': '5200', 'scene': 'scene-mt',
         'screen': ('phone', '1792,420 2137,415 2099,1155 1734,1150', 804, 1748,
-                   imgs(['screen-mt-main.webp', 'screen-mt-den.webp', 'screen-mt-mapa.webp', 'screen-mt-penize.webp'], 804, 1748)),
+                   imgs(['screen-mt-main.webp', 'screen-mt-trip.webp', 'screen-mt-den.webp', 'screen-mt-mapa.webp', 'screen-mt-penize.webp'], 804, 1748)),
         'extra': 'reel',
     },
     {
