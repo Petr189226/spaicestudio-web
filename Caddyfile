@@ -1,0 +1,43 @@
+# spaicestudio.cz na Railway. TLS končí na hraně Railway, kontejner mluví jen HTTP.
+{
+	auto_https off
+	admin off
+	persist_config off
+}
+
+:{$PORT} {
+	root * /srv
+	encode zstd gzip
+
+	# Kanonická adresa je bez www (meta tagy, sitemap, náhledy odkazů)
+	@www host www.spaicestudio.cz
+	redir @www https://spaicestudio.cz{uri} permanent
+
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		Strict-Transport-Security "max-age=31536000"
+		-Server
+	}
+
+	# Písmo se nemění; obrázky a styly mají stálé názvy, proto jen krátká cache
+	@fonts path /assets/fonts/*
+	header @fonts Cache-Control "public, max-age=31536000, immutable"
+	@media path *.webp *.jpg *.jpeg *.png *.svg *.ico *.mp4 *.webm
+	header @media Cache-Control "public, max-age=86400"
+	@rest not path /assets/fonts/* *.webp *.jpg *.jpeg *.png *.svg *.ico *.mp4 *.webm
+	header @rest Cache-Control "public, max-age=0, must-revalidate"
+
+	file_server
+
+	handle_errors {
+		@404 expression `{err.status_code} == 404`
+		handle @404 {
+			header Cache-Control "no-store"
+			rewrite * /404.html
+			file_server
+		}
+	}
+}

@@ -15,4 +15,8 @@
 !/assets/
 !/prace/
 !/tools/
+!/Dockerfile
+!/Caddyfile
+!/.dockerignore
+!/railway.json
 .DS_Store
