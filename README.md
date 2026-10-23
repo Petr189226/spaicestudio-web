@@ -4,12 +4,12 @@ Statický web studia spaice. Bez buildu: co je v repozitáři, to se nasadí.
 
 | Cesta | Obsah |
 |---|---|
-| `index.html` | hlavní stránka (generovaná, viz `tools/web.py`) |
+| `index.html` | hlavní stránka |
 | `prace/<projekt>/` | stránky projektů s vlastním náhledem odkazu (MojeTripy, Cookpit, Gentlemen's Garage, J&J Barber Shop) |
 | `assets/` | styly, skript, písmo Archivo, obrázky (`share*.jpg` jsou náhledy odkazů 1200 × 630) |
 | `404.html` | stránka pro neexistující adresy |
 | `Dockerfile`, `Caddyfile` | nasazení na Railway (viz níže) |
-| `tools/web.py` | vygeneruje `index.html`, `prace/*/index.html` a `404.html`. Hlavička, menu aplikací, patička a všechny texty jsou na jednom místě. Po změně pusť `python3 tools/web.py`. |
+| `tools/projekty.py` | vygeneruje `prace/*/index.html`. Hlavička a patička jsou stejné jako v `index.html`, po jejich změně skript pusť znovu. |
 
 Lokální náhled: `python3 -m http.server 4321` a otevřít http://localhost:4321.
 
