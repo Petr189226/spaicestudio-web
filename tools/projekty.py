@@ -155,6 +155,7 @@ PAGE = '''<!doctype html>
   <script src="../../assets/js/main.js" defer></script>
 </head>
 <body>
+<!--email_off-->
   <a class="skip" href="#obsah">Přeskočit na obsah</a>
 
   <header class="nav" data-nav>
@@ -309,6 +310,7 @@ PAGE = '''<!doctype html>
       <p class="footer__copy">©&nbsp;2026 spaice studio. Petr Chajda, IČO 23250607, Průběžná 1033/4, 100&nbsp;00 Praha&nbsp;10</p>
     </div>
   </footer>
+<!--/email_off-->
 </body>
 </html>
 '''
