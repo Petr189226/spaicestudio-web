@@ -4,30 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Cookpit, večeře podle akcí v obchodech | spaice studio</title>
-  <meta name="description" content="Naplánuje večeře na celý týden podle toho, co je v akci a co máte doma.">
+  <meta name="description" content="Naplánuje večeře na celý týden podle akcí v obchodech a toho, co máte doma.">
   <link rel="canonical" href="https://spaicestudio.cz/prace/cookpit/">
   <meta name="theme-color" content="#0a0908">
-  <!-- Náhled při sdílení odkazu na tento projekt. Adresy musí být absolutní. -->
+  <meta name="apple-mobile-web-app-title" content="spaice">
+  <!-- Náhled při sdílení odkazu (iMessage, WhatsApp, Messenger, LinkedIn, Slack, X). Adresy musí být absolutní. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="spaice studio">
   <meta property="og:locale" content="cs_CZ">
   <meta property="og:url" content="https://spaicestudio.cz/prace/cookpit/">
   <meta property="og:title" content="Cookpit, večeře podle akcí v obchodech | spaice studio">
-  <meta property="og:description" content="Naplánuje večeře na celý týden podle toho, co je v akci a co máte doma.">
+  <meta property="og:description" content="Naplánuje večeře na celý týden podle akcí v obchodech a toho, co máte doma.">
   <meta property="og:image" content="https://spaicestudio.cz/assets/img/share-cookpit.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Telefon s aplikací Cookpit vedle talíře špaget v kuchyni. Nápis: Cookpit, vlastní aplikace pro iPhone, brzy v App Storu.">
+  <meta property="og:image:alt" content="Obrazovky aplikace Cookpit s plánem večeří na týden. Nápis: Cookpit, vlastní aplikace pro iPhone.">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="../../favicon.ico" sizes="48x48">
-  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
-  <link rel="preload" href="../../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../../assets/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.spaiceReady)document.documentElement.classList.add('no-script-run')},3000)</script>
-  <script src="../../assets/js/main.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
 </head>
 <body>
 <!--email_off-->
@@ -35,13 +36,13 @@
 
   <header class="nav" data-nav>
     <div class="nav__inner">
-      <a class="logo" href="../../" aria-label="spaice studio, úvodní stránka">spa<span class="logo__i">ı</span>ce</a>
+      <a class="logo" href="/" aria-label="spaice studio, úvodní stránka">spa<span class="logo__i">ı</span>ce</a>
       <nav class="nav__links" aria-label="Hlavní navigace">
-        <a href="../../#prace" aria-current="true">Práce</a>
+        <a href="/#prace">Práce</a>
         <button class="nav__apps" type="button" aria-expanded="false" aria-controls="aplikace" data-apps-toggle>Naše aplikace<span class="nav__plus" aria-hidden="true"></span></button>
-        <a href="../../#sluzby">Služby</a>
+        <a href="/#sluzby">Služby</a>
       </nav>
-      <a class="btn btn--sm nav__cta" href="../../#kontakt">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
+      <a class="btn btn--sm nav__cta" href="/#kontakt">Probrat projekt</a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>Menu</button>
     </div>
     <div class="apps" id="aplikace" data-apps hidden>
@@ -49,34 +50,34 @@
         <ul class="apps__list" aria-label="Naše aplikace">
           <li>
             <a class="app" href="https://apps.apple.com/cz/app/mojetripy/id6815389423" target="_blank" rel="noopener" data-preview="0">
-              <img class="app__icon" src="../../assets/img/app-mojetripy.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <img class="app__icon" src="/assets/img/app-mojetripy.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
               <span class="app__name">MojeTripy</span>
-              <span class="app__desc">Plánovač cest den po dni</span>
+              <span class="app__desc">Plán cesty den po dni</span>
               <span class="app__status">App Store<span class="arrow arrow--out" aria-hidden="true"></span></span>
             </a>
           </li>
           <li>
             <a class="app" href="https://cookpit.spaicestudio.cz/" data-preview="1">
-              <img class="app__icon" src="../../assets/img/app-cookpit.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <img class="app__icon" src="/assets/img/app-cookpit.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
               <span class="app__name">Cookpit</span>
-              <span class="app__desc">Večeře z&nbsp;akcí na celý týden</span>
-              <span class="app__status">Brzy</span>
+              <span class="app__desc">Večeře na týden</span>
+              <span class="app__status">Před vydáním</span>
             </a>
           </li>
           <li>
             <a class="app" href="https://jetopodvod.spaicestudio.cz/" data-preview="2">
-              <img class="app__icon" src="../../assets/img/app-jetopodvod.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <img class="app__icon" src="/assets/img/app-jetopodvod.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
               <span class="app__name">Je to podvod?</span>
-              <span class="app__desc">Prověří zprávu dřív, než kliknete</span>
-              <span class="app__status">Brzy</span>
+              <span class="app__desc">Podezřelé zprávy a&nbsp;odkazy</span>
+              <span class="app__status">Před vydáním</span>
             </a>
           </li>
         </ul>
         <div class="apps__preview phone" aria-hidden="true">
           <div class="phone__screen">
-            <img class="is-active" src="../../assets/img/screen-mt-main.webp" alt="" width="804" height="1748" loading="lazy" decoding="async">
-            <img src="../../assets/img/uv-dnes.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
-            <img src="../../assets/img/app-preview-jetopodvod.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
+            <img class="is-active" src="/assets/img/screen-mt-main.webp" alt="" width="804" height="1748" loading="lazy" decoding="async">
+            <img src="/assets/img/uv-dnes.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
+            <img src="/assets/img/app-preview-jetopodvod.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -85,121 +86,88 @@
 
   <div class="menu" id="menu" data-menu hidden>
     <nav aria-label="Mobilní navigace">
-      <a class="menu__link" href="../../#prace">Práce</a>
-      <a class="menu__link" href="../../#sluzby">Služby</a>
+      <a class="menu__link" href="/#prace">Práce</a>
+      <a class="menu__link" href="/#sluzby">Služby</a>
       <div class="menu__apps">
         <p class="menu__label">Naše aplikace</p>
         <ul aria-label="Naše aplikace">
           <li>
             <a class="app" href="https://apps.apple.com/cz/app/mojetripy/id6815389423" target="_blank" rel="noopener">
-              <img class="app__icon" src="../../assets/img/app-mojetripy.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <img class="app__icon" src="/assets/img/app-mojetripy.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
               <span class="app__name">MojeTripy</span>
-              <span class="app__desc">Plánovač cest den po dni</span>
+              <span class="app__desc">Plán cesty den po dni</span>
               <span class="app__status">App Store<span class="arrow arrow--out" aria-hidden="true"></span></span>
             </a>
           </li>
           <li>
             <a class="app" href="https://cookpit.spaicestudio.cz/">
-              <img class="app__icon" src="../../assets/img/app-cookpit.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <img class="app__icon" src="/assets/img/app-cookpit.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
               <span class="app__name">Cookpit</span>
-              <span class="app__desc">Večeře z&nbsp;akcí na celý týden</span>
-              <span class="app__status">Brzy</span>
+              <span class="app__desc">Večeře na týden</span>
+              <span class="app__status">Před vydáním</span>
             </a>
           </li>
           <li>
             <a class="app" href="https://jetopodvod.spaicestudio.cz/">
-              <img class="app__icon" src="../../assets/img/app-jetopodvod.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <img class="app__icon" src="/assets/img/app-jetopodvod.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
               <span class="app__name">Je to podvod?</span>
-              <span class="app__desc">Prověří zprávu dřív, než kliknete</span>
-              <span class="app__status">Brzy</span>
+              <span class="app__desc">Podezřelé zprávy a&nbsp;odkazy</span>
+              <span class="app__status">Před vydáním</span>
             </a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="menu__foot">
-      <a class="btn btn--solid btn--lg" href="../../#kontakt">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
+      <a class="btn btn--lg" href="/#kontakt">Probrat projekt</a>
       <a class="menu__mail" href="mailto:ahoj@spaicestudio.cz">ahoj@spaicestudio.cz</a>
     </div>
   </div>
 
   <main id="obsah">
-    <article class="case work--bleed" aria-labelledby="case-title">
+    <article class="case" aria-labelledby="case-title">
       <header class="case__head wrap" data-top>
-        <p class="case__kind">Vlastní aplikace pro iPhone, brzy v&nbsp;App Storu</p>
+        <p class="case__kind">Vlastní aplikace pro iPhone, před vydáním v&nbsp;App Storu</p>
         <h1 class="case__name" id="case-title">Cookpit</h1>
-      </header>
-
-      <figure class="work__media" aria-hidden="true">
-        <div class="work__frame" style="--focus-x:.63;--focus-y:.58">
-          <div class="work__zoom">
-            <div class="stage" data-stage data-w="2752" data-h="1536" data-interval="5600">
-              <img class="stage__bg" src="../../assets/img/scene-uv-2048.webp" srcset="../../assets/img/scene-uv-1200.webp 1200w, ../../assets/img/scene-uv-2048.webp 2048w, ../../assets/img/scene-uv-2752.webp 2752w" sizes="(max-width: 900px) 700px, 100vw" width="2752" height="1536" alt="" fetchpriority="high" decoding="async">
-              <div class="screen screen--phone" data-quad="1638,599.5 1917,597 1841,1184 1563,1166" data-src-w="804" data-src-h="1748">
-                  <img class="is-active" src="../../assets/img/uv-dnes.webp" alt="" width="900" height="1957" decoding="async">
-                  <img src="../../assets/img/uv-tyden.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
-                  <img src="../../assets/img/uv-detail.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
-              </div>
-            </div>
+        <div class="case__intro">
+          <div class="case__text">
+            <p class="case__lead">Naplánuje večeře na celý týden podle akcí v&nbsp;obchodech a&nbsp;toho, co máte doma.</p>
+            <p class="case__more-text">Cookpit hlídá zásoby ve spíži a&nbsp;jejich trvanlivost. Z&nbsp;plánu sestaví nákupní seznam, který sdílíte s&nbsp;domácností.</p>
+          </div>
+          <div class="case__side">
+            <ul class="facts"><li>467&nbsp;receptů</li><li>Akce z&nbsp;11&nbsp;obchodů včetně Lidlu, Kauflandu a&nbsp;Albertu</li></ul>
+            <a class="link" href="https://cookpit.spaicestudio.cz/" target="_blank" rel="noopener">cookpit.spaicestudio.cz<span class="arrow arrow--out" aria-hidden="true"></span></a>
           </div>
         </div>
-      </figure>
-
-      <div class="case__body wrap">
-        <div class="case__text" data-reveal>
-          <p class="case__lead">Naplánuje večeře na celý týden podle toho, co je v&nbsp;akci a&nbsp;co máte doma.</p>
-          <p class="case__more">Spíž hlídá, co máte doma a&nbsp;co brzy projde. Nákupní seznam se složí z&nbsp;plánu sám a&nbsp;sdílí se s&nbsp;celou domácností.</p>
-        </div>
-        <div class="case__side" data-reveal style="--d:.08s">
-          <ul class="work__facts">
-            <li>467&nbsp;receptů</li>
-            <li>Akce z&nbsp;Lidlu, Kauflandu, Albertu a&nbsp;osmi dalších obchodů</li>
-          </ul>
-          <a class="link link--url" href="https://cookpit.spaicestudio.cz/" target="_blank" rel="noopener">cookpit.spaicestudio.cz<span class="arrow arrow--out" aria-hidden="true"></span></a>
-        </div>
+      </header>
+      <div class="case__show wrap">
+        <ul class="show show--screens"><li class="screen-item"><div class="phone"><div class="phone__screen"><img src="/assets/img/uv-dnes.webp" alt="Cookpit, dnes: tip na večeři s časem přípravy, cenou za porci a počtem porcí." width="900" height="1957" loading="lazy" decoding="async"></div></div><h3>Dnešní večeře</h3><p>Tip na večeři s&nbsp;cenou za porci. Výběr vychází z&nbsp;akcí v&nbsp;obchodech a&nbsp;ze zásob doma.</p></li><li class="screen-item"><div class="phone"><div class="phone__screen"><img src="/assets/img/uv-tyden.webp" alt="Cookpit, týden: večeře na pět dní, nákup za 583 Kč z rozpočtu 600 Kč a úspora z akcí." width="900" height="1957" loading="lazy" decoding="async"></div></div><h3>Večeře na celý týden</h3><p>U&nbsp;plánu večeří vidíte cenu nákupu a&nbsp;rozpočet. Cookpit spočítá také úsporu z&nbsp;akcí v&nbsp;obchodech.</p></li><li class="screen-item"><div class="phone"><div class="phone__screen"><img src="/assets/img/uv-detail.webp" alt="Cookpit, recept: špagety s míchanými vejci, cena za porci a suroviny v akci." width="900" height="1957" loading="lazy" decoding="async"></div></div><h3>Recept a&nbsp;cena porce</h3><p>U&nbsp;receptu vidíte cenu za porci. Při vaření vás Cookpit provede postupem krok za krokem a&nbsp;nabídne časovač.</p></li></ul>
       </div>
-      <ul class="screens wrap" aria-label="Obrazovky aplikace Cookpit">
-        <li class="screens__item" data-reveal>
-          <div class="phone"><div class="phone__screen"><img src="../../assets/img/uv-dnes.webp" alt="Obrazovka Dnes: tip na večeři s časem přípravy, cenou za porci a počtem porcí." width="900" height="1957" loading="lazy" decoding="async"></div></div>
-          <h2>Dnešní večeře</h2>
-          <p>Jeden tip na večeři. Hned vidíte čas přípravy, cenu za porci i&nbsp;počet porcí.</p>
-        </li>
-        <li class="screens__item" data-reveal style="--d:.08s">
-          <div class="phone"><div class="phone__screen"><img src="../../assets/img/uv-tyden.webp" alt="Obrazovka Týden: jídelníček, cena nákupu, rozpočet a úspora díky akcím." width="900" height="1957" loading="lazy" decoding="async"></div></div>
-          <h2>Večeře na celý týden</h2>
-          <p>Jídelníček na celý týden. Hned vidíte, kolik stojí nákup, jestli se vejdete do rozpočtu a&nbsp;kolik ušetříte na akcích.</p>
-        </li>
-        <li class="screens__item" data-reveal style="--d:.16s">
-          <div class="phone"><div class="phone__screen"><img src="../../assets/img/uv-detail.webp" alt="Detail receptu: suroviny, cena za porci podle dnešních akcí a postup." width="900" height="1957" loading="lazy" decoding="async"></div></div>
-          <h2>Recept krok za krokem</h2>
-          <p>Cena za porci podle dnešních akcí, suroviny a&nbsp;postup. Při vaření máte na displeji jen jeden krok a&nbsp;u&nbsp;něj časovač.</p>
-        </li>
-      </ul>
     </article>
 
     <nav class="next" aria-label="Další projekt">
-      <a class="next__link wrap" href="../gentlemens-garage/">
-        <span class="next__label">Další projekt<span class="arrow" aria-hidden="true"></span></span>
+      <a class="next__link wrap" href="/prace/gentlemens-garage/">
+        <span class="next__label">Další projekt</span>
         <span class="next__name">Gentlemen’s Garage</span>
       </a>
     </nav>
 
-    <section class="cta" aria-labelledby="cta-title">
-      <div class="wrap">
-        <h2 class="headline" id="cta-title">Postavíme i&nbsp;ten váš.</h2>
-        <a class="btn btn--solid btn--lg" href="../../#kontakt" data-reveal style="--d:.06s">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
-      </div>
+    <section class="cta wrap" aria-labelledby="cta-title">
+      <h2 class="headline" id="cta-title">Proberme vaše zadání</h2>
+      <a class="btn btn--lg" href="/#kontakt">Probrat projekt</a>
     </section>
   </main>
 
   <footer class="footer">
     <div class="footer__inner wrap">
-      <a class="logo logo--footer" href="../../" aria-label="spaice studio, úvodní stránka">spa<span class="logo__i">ı</span>ce</a>
-      <p class="footer__tag">Studio pro weby a&nbsp;mobilní aplikace</p>
+      <div class="footer__brand">
+        <a class="logo logo--footer" href="/" aria-label="spaice studio, úvodní stránka">spa<span class="logo__i">ı</span>ce</a>
+        <p class="footer__tag">Weby a&nbsp;mobilní aplikace. Praha.</p>
+      </div>
       <nav class="footer__nav" aria-label="Patička">
-        <a href="../../#prace">Práce</a>
-        <a href="../../#sluzby">Služby</a>
-        <a href="../../#kontakt">Kontakt</a>
+        <a href="/#prace">Práce</a>
+        <a href="/#sluzby">Služby</a>
+        <a href="/#kontakt">Kontakt</a>
       </nav>
       <a class="footer__mail" href="mailto:ahoj@spaicestudio.cz">ahoj@spaicestudio.cz</a>
       <p class="footer__copy">©&nbsp;2026 spaice studio. Petr Chajda, IČO 23250607, Průběžná 1033/4, 100&nbsp;00 Praha&nbsp;10</p>

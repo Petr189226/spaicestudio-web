@@ -6,7 +6,6 @@
 
   /* Navigace: podklad po odjetí z úvodu stránky */
   const nav = $('[data-nav]');
-  const hero = $('.hero');
   const top = $('[data-top]');
   if (nav && top) {
     const sentinel = document.createElement('div');
@@ -139,114 +138,6 @@
     });
   }
 
-  /* Scény: fotka v pevných souřadnicích, na displeje se napasují skutečné screenshoty */
-
-  // Homografie: obdélník screenshotu -> čtyři rohy displeje na fotce
-  const solve = (A, b) => {
-    const n = b.length;
-    for (let i = 0; i < n; i++) {
-      let p = i;
-      for (let r = i + 1; r < n; r++) if (Math.abs(A[r][i]) > Math.abs(A[p][i])) p = r;
-      [A[i], A[p]] = [A[p], A[i]];
-      [b[i], b[p]] = [b[p], b[i]];
-      for (let r = i + 1; r < n; r++) {
-        const f = A[r][i] / A[i][i];
-        for (let c = i; c < n; c++) A[r][c] -= f * A[i][c];
-        b[r] -= f * b[i];
-      }
-    }
-    const x = new Array(n).fill(0);
-    for (let i = n - 1; i >= 0; i--) {
-      let s = b[i];
-      for (let c = i + 1; c < n; c++) s -= A[i][c] * x[c];
-      x[i] = s / A[i][i];
-    }
-    return x;
-  };
-  const quadToCss = (w, h, quad) => {
-    const src = [[0, 0], [w, 0], [w, h], [0, h]];
-    const A = [];
-    const b = [];
-    src.forEach(([x, y], i) => {
-      const [u, v] = quad[i];
-      A.push([x, y, 1, 0, 0, 0, -u * x, -u * y]); b.push(u);
-      A.push([0, 0, 0, x, y, 1, -v * x, -v * y]); b.push(v);
-    });
-    const [a, bb, c, d, e, f, g, hh] = solve(A, b);
-    return `matrix3d(${a},${d},0,${g},${bb},${e},0,${hh},0,0,1,0,${c},${f},0,1)`;
-  };
-
-  const setupStage = (stage) => {
-    const W = Number(stage.dataset.w);
-    const H = Number(stage.dataset.h);
-    const box = stage.parentElement;
-    const screens = $$('[data-quad]', stage);
-
-    screens.forEach((screen) => {
-      const quad = screen.dataset.quad.trim().split(/\s+/).map((pt) => pt.split(',').map(Number));
-      const w = Number(screen.dataset.srcW);
-      const h = Number(screen.dataset.srcH);
-      screen.style.width = `${w}px`;
-      screen.style.height = `${h}px`;
-      screen.style.transform = quadToCss(w, h, quad);
-    });
-
-    // Scéna vyplní rám jako object-fit: cover, ohnisko drží zařízení v záběru
-    const fit = () => {
-      const bw = box.clientWidth;
-      const bh = box.clientHeight;
-      const s = Math.max(bw / W, bh / H);
-      const fx = Number(getComputedStyle(stage).getPropertyValue('--focus-x')) || 0.5;
-      const fy = Number(getComputedStyle(stage).getPropertyValue('--focus-y')) || 0.5;
-      const x = Math.min(0, Math.max(bw - W * s, bw / 2 - fx * W * s));
-      const y = Math.min(0, Math.max(bh - H * s, bh / 2 - fy * H * s));
-      stage.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${s})`;
-      stage.classList.add('is-fit');
-    };
-    fit();
-    new ResizeObserver(fit).observe(box);
-
-    // Obrazovky se střídají, jen když je scéna vidět
-    const count = Math.max(0, ...screens.map((screen) => $$('img', screen).length));
-    const states = stage.closest('.hero') ? $$('[data-onscreen-state]', hero) : [];
-    const toggle = stage.closest('.hero') ? $('[data-cycle-toggle]', hero) : null;
-    const every = Number(stage.dataset.interval) || 5200;
-    let index = 0;
-    let timer = null;
-    let visible = false;
-    let paused = reducedMotion.matches;
-
-    const show = (i) => {
-      index = (i + count) % count;
-      screens.forEach((screen) => $$('img', screen).forEach((img, k) => img.classList.toggle('is-active', k === index)));
-      states.forEach((s, k) => { s.hidden = k !== index; });
-    };
-    const sync = () => {
-      const run = count > 1 && visible && !paused && !document.hidden;
-      if (run && !timer) timer = setInterval(() => show(index + 1), every);
-      else if (!run && timer) { clearInterval(timer); timer = null; }
-    };
-    const label = () => {
-      if (!toggle) return;
-      toggle.classList.toggle('is-paused', paused);
-      toggle.setAttribute('aria-label', paused ? 'Spustit střídání projektů' : 'Pozastavit střídání projektů');
-    };
-
-    show(0);
-    label();
-    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }).observe(box);
-    document.addEventListener('visibilitychange', sync);
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        paused = !paused;
-        if (!paused) show(index + 1);
-        label();
-        sync();
-      });
-    }
-  };
-  $$('[data-stage]').forEach(setupStage);
-
   /* Postupné odkrývání obsahu */
   const reveals = $$('[data-reveal]');
   if ('IntersectionObserver' in window && !reducedMotion.matches) {
@@ -262,68 +153,22 @@
     reveals.forEach((el) => el.classList.add('is-in'));
   }
 
-  /* Kontakt: poptávka jako věta */
-  const form = $('[data-config]');
-  if (form) {
-    const done = $('[data-config-done]');
-    const picks = $$('input[name="typ"]', form);
-    const STUDIO_MAIL = 'ahoj@spaicestudio.cz';
-    // Ve větě stojí služby ve čtvrtém pádu, v předmětu e-mailu v prvním
-    const SUBJECT = { web: 'web', aplikaci: 'aplikace', 'správu webu': 'správa webu' };
-
-    const values = () => {
-      const data = new FormData(form);
-      return {
-        typ: data.getAll('typ'),
-        jmeno: (data.get('jmeno') || '').trim(),
-        email: (data.get('email') || '').trim(),
-        zprava: (data.get('zprava') || '').trim(),
-      };
-    };
-
-    const joinCz = (items) => items.length > 1 ? `${items.slice(0, -1).join(', ')} a ${items.at(-1)}` : (items[0] || '');
-
-    const setError = (name, message) => {
-      $(`[data-error="${name}"]`, form).textContent = message || '';
-      const inputs = name === 'typ' ? picks : [form.elements[name]];
-      inputs.forEach((input) => input.setAttribute('aria-invalid', message ? 'true' : 'false'));
-    };
-
-    const validate = (v) => {
-      const errors = {};
-      if (!v.jmeno) errors.jmeno = 'Napište, jak vám máme říkat.';
-      if (!v.typ.length) errors.typ = 'Zaškrtněte web, aplikaci nebo správu webu.';
-      if (!v.email) errors.email = 'Bez e-mailu se vám neozveme.';
-      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) errors.email = 'V e-mailu je asi překlep.';
-      ['jmeno', 'typ', 'email'].forEach((k) => setError(k, errors[k]));
-      return errors;
-    };
-
-    form.addEventListener('input', (e) => {
-      if (e.target.getAttribute('aria-invalid') !== 'true') return;
-      if (e.target.name === 'typ') { if (picks.some((p) => p.checked)) setError('typ', ''); }
-      else setError(e.target.name, '');
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const v = values();
-      const first = Object.keys(validate(v))[0];
-      if (first) {
-        (first === 'typ' ? picks[0] : form.elements[first]).focus();
-        return;
+  /* Kontakt: adresu jde zkopírovat jedním klepnutím, i když není nastavený e-mailový program */
+  const copy = $('[data-copy]');
+  const copied = $('[data-copied]');
+  if (copy && copied) {
+    copy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(copy.dataset.copy);
+        copied.textContent = 'Adresa je zkopírovaná.';
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents($('.contact__email'));
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        copied.textContent = 'Adresa je označená, zkopírujte ji.';
       }
-      const subject = `Poptávka: ${joinCz(v.typ.map((t) => SUBJECT[t] || t))}`;
-      const body = [
-        'Dobrý den,',
-        '',
-        `jmenuji se ${v.jmeno} a potřebuji ${joinCz(v.typ)}. Ozvěte se mi na ${v.email}.`,
-        ...(v.zprava ? ['', v.zprava] : []),
-        '',
-        v.jmeno,
-      ].join('\r\n');
-      window.location.href = `mailto:${STUDIO_MAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      done.hidden = false;
     });
   }
 })();
