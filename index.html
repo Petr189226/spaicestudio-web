@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>spaice studio | Weby a mobilní aplikace</title>
+  <meta name="description" content="Navrhujeme a vyvíjíme weby a mobilní aplikace. Zajišťujeme také správu webů, od aktualizací a záloh po úpravy obsahu.">
+  <link rel="canonical" href="https://spaicestudio.cz/">
+  <meta name="theme-color" content="#0a0908">
+  <meta name="apple-mobile-web-app-title" content="spaice">
+  <!-- Náhled při sdílení odkazu (iMessage, WhatsApp, Messenger, LinkedIn, Slack, X). Adresy musí být absolutní. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="spaice studio">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:url" content="https://spaicestudio.cz/">
+  <meta property="og:title" content="spaice studio | Weby a mobilní aplikace">
+  <meta property="og:description" content="Navrhujeme a vyvíjíme weby a mobilní aplikace. O weby se staráme i po spuštění.">
+  <meta property="og:image" content="https://spaicestudio.cz/assets/img/share.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Notebook s webem Gentlemen's Garage a telefon s aplikací MojeTripy. Nápis: Krásné weby a aplikace. Postavené pořádně.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "spaice studio",
+      "url": "https://spaicestudio.cz/",
+      "email": "ahoj@spaicestudio.cz",
+      "logo": "https://spaicestudio.cz/apple-touch-icon.png",
+      "description": "Navrhujeme a vyvíjíme weby a mobilní aplikace. O weby se staráme i po spuštění."
+    }
+  </script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/img/hero-showroom-2048.webp" imagesrcset="assets/img/hero-showroom-1200.webp 1200w, assets/img/hero-showroom-2048.webp 2048w, assets/img/hero-showroom-3840.webp 3840w" imagesizes="(max-width: 900px) 940px, 112vw">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#obsah">Přeskočit na obsah</a>
+
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a class="logo" href="#top" aria-label="spaice studio, na začátek stránky">spa<span class="logo__i">ı</span>ce</a>
+      <nav class="nav__links" aria-label="Hlavní navigace">
+        <a href="#prace">Práce</a>
+        <a href="#sluzby">Služby</a>
+      </nav>
+      <a class="btn btn--sm nav__cta" href="#kontakt">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>Menu</button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" data-menu hidden>
+    <nav aria-label="Mobilní navigace">
+      <a class="menu__link" href="#prace">Práce</a>
+      <a class="menu__link" href="#sluzby">Služby</a>
+    </nav>
+    <a class="btn btn--solid btn--lg" href="#kontakt">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
+  </div>
+
+  <main id="obsah">
+
+    <!-- Úvod: showroom, na displejích běží skutečné projekty studia -->
+    <section class="hero" id="top" aria-labelledby="hero-title" data-top>
+      <div class="hero__media" aria-hidden="true">
+        <div class="stage" data-stage data-w="2752" data-h="1536">
+          <img class="stage__bg" src="assets/img/hero-showroom-2048.webp" srcset="assets/img/hero-showroom-1200.webp 1200w, assets/img/hero-showroom-2048.webp 2048w, assets/img/hero-showroom-3840.webp 3840w" sizes="(max-width: 900px) 940px, 112vw" width="2752" height="1536" alt="" fetchpriority="high" decoding="async">
+          <div class="screen screen--laptop" data-quad="1438,550 2176.5,535 2141.5,1070 1384.5,1045" data-src-w="1440" data-src-h="900">
+            <img class="is-active" src="assets/img/screen-gg.webp" alt="" width="1440" height="900" decoding="async">
+            <img src="assets/img/screen-jj.webp" alt="" width="1440" height="900" decoding="async">
+          </div>
+          <div class="screen screen--phone" data-quad="2273,601.5 2473,602 2430,1002 2221.5,995" data-src-w="804" data-src-h="1748">
+            <img class="is-active" src="assets/img/screen-mt-main.webp" alt="" width="804" height="1748" decoding="async">
+            <img src="assets/img/uv-dnes.webp" alt="" width="900" height="1957" decoding="async">
+          </div>
+        </div>
+      </div>
+      <div class="hero__content wrap">
+        <p class="meta hero__meta">Studio pro weby a&nbsp;aplikace</p>
+        <h1 class="display hero__title" id="hero-title">
+          <span class="hero__line">Krásné weby</span>
+          <span class="hero__line">a&nbsp;aplikace.</span>
+          <span class="hero__line">Postavené</span>
+          <span class="hero__line">pořádně.</span>
+        </h1>
+        <p class="hero__lead">Navrhujeme a&nbsp;vyvíjíme weby a&nbsp;mobilní aplikace. O&nbsp;weby se staráme i&nbsp;po spuštění.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#kontakt">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
+          <a class="link" href="#prace">Práce<span class="arrow" aria-hidden="true"></span></a>
+        </div>
+      </div>
+      <div class="hero__onscreen">
+        <div class="onscreen">
+          <p class="onscreen__label">Na obrazovkách</p>
+          <p class="onscreen__value" data-onscreen-state>Gentlemen's Garage <span>web</span> / MojeTripy <span>aplikace</span></p>
+          <p class="onscreen__value" data-onscreen-state hidden>J&amp;J Barber Shop <span>web</span> / Cookpit <span>aplikace</span></p>
+        </div>
+        <button class="hero__toggle" type="button" aria-label="Pozastavit střídání projektů" data-cycle-toggle>
+          <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2" height="10"/><rect x="10" y="3" width="2" height="10"/></svg>
+          <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10l8-5z"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Úvod: jedna redakční myšlenka -->
+    <section class="statement wrap" aria-label="O studiu">
+      <p class="statement__text" data-reveal>Design má sloužit lidem, kteří hledají informaci, rezervují termín nebo plánují cestu. <span>Stavíme také vlastní aplikace. MojeTripy už jsou v&nbsp;App Storu, Cookpit vyvíjíme. Podívejte se, jak přistupujeme k&nbsp;plánování cest i&nbsp;každodenních večeří.</span></p>
+    </section>
+
+    <!-- Práce: každý projekt jako exponát, na displejích skutečné obrazovky -->
+    <div class="works" id="prace">
+
+      <article class="work work--bleed" id="mojetripy" aria-labelledby="mt-name">
+        <figure class="work__media" aria-hidden="true">
+          <div class="work__frame" style="--focus-x:.7;--focus-y:.51">
+            <div class="work__zoom">
+              <div class="stage" data-stage data-w="2752" data-h="1536" data-interval="5200">
+                <img class="stage__bg" src="assets/img/scene-mt-2048.webp" srcset="assets/img/scene-mt-1200.webp 1200w, assets/img/scene-mt-2048.webp 2048w" sizes="(max-width: 900px) 700px, 100vw" width="2752" height="1536" alt="" loading="lazy" decoding="async">
+                <div class="screen screen--phone" data-quad="1792,420 2137,415 2099,1155 1734,1150" data-src-w="804" data-src-h="1748">
+                  <img class="is-active" src="assets/img/screen-mt-main.webp" alt="" width="804" height="1748" loading="lazy" decoding="async">
+                  <img src="assets/img/screen-mt-den.webp" alt="" width="804" height="1748" loading="lazy" decoding="async">
+                  <img src="assets/img/screen-mt-mapa.webp" alt="" width="804" height="1748" loading="lazy" decoding="async">
+                  <img src="assets/img/screen-mt-penize.webp" alt="" width="804" height="1748" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <div class="work__caption wrap" data-reveal>
+          <div class="work__title">
+            <h2 class="work__name" id="mt-name">MojeTripy</h2>
+            <p class="work__kind">Vlastní aplikace pro iPhone, 2026</p>
+          </div>
+          <div class="work__body">
+            <p>Cesta den po dni, zastávky na mapě a&nbsp;rozpočet v&nbsp;korunách. S&nbsp;průvodcem, který zná váš plán.</p>
+            <ul class="work__facts">
+              <li>Hodnocení 5,0 v&nbsp;App Storu</li>
+              <li>13 jazyků</li>
+              <li>Přes 200 destinací v&nbsp;katalogu</li>
+            </ul>
+            <a class="link" href="https://apps.apple.com/cz/app/mojetripy/id6815389423" target="_blank" rel="noopener">Stáhnout v&nbsp;App Storu<span class="arrow arrow--out" aria-hidden="true"></span></a>
+          </div>
+        </div>
+        <div class="reel" data-reel>
+          <div class="reel__viewport">
+            <ul class="reel__track" data-reel-track aria-label="Grafika aplikace MojeTripy z App Storu">
+              <li><img src="assets/img/mt-panel-01.webp" width="760" height="1651" loading="lazy" decoding="async" alt="„Tvůj osobní průvodce“: Manažer zná plán cesty a navrhuje, kam zajít."></li>
+              <li><img src="assets/img/mt-panel-02.webp" width="760" height="1651" loading="lazy" decoding="async" alt="„Změň plán. Jedním klepnutím.“ Manažer navrhne úpravu programu, uživatel ji potvrdí."></li>
+              <li><img src="assets/img/mt-panel-03.webp" width="760" height="1651" loading="lazy" decoding="async" alt="„Tvůj plán. I bez signálu.“ Uložený plán, mapy dnů a počasí dostupné offline."></li>
+              <li><img src="assets/img/mt-panel-04.webp" width="760" height="1651" loading="lazy" decoding="async" alt="„Začni hotovým plánem“: Budapešť na tři dny s mapou a rozpočtem cesty."></li>
+              <li><img src="assets/img/mt-panel-05.webp" width="760" height="1651" loading="lazy" decoding="async" alt="„Více měst. Jedna cesta.“ Plán cesty rozdělený do etap se zastávkami na mapě."></li>
+              <li><img src="assets/img/mt-panel-06.webp" width="760" height="1651" loading="lazy" decoding="async" alt="„Hotel podle tvých představ“: tipy na ubytování podle rozpočtu a čtvrti."></li>
+            </ul>
+          </div>
+        </div>
+        <p class="work__note wrap">Grafika z&nbsp;App Storu</p>
+      </article>
+
+      <article class="work work--contained" id="cookpit" aria-labelledby="ck-name">
+        <figure class="work__media wrap" aria-hidden="true">
+          <div class="work__frame" style="--focus-x:.63;--focus-y:.58">
+            <div class="work__zoom">
+              <div class="stage" data-stage data-w="2752" data-h="1536" data-interval="5600">
+                <img class="stage__bg" src="assets/img/scene-uv-2048.webp" srcset="assets/img/scene-uv-1200.webp 1200w, assets/img/scene-uv-2048.webp 2048w" sizes="(max-width: 900px) 700px, 90vw" width="2752" height="1536" alt="" loading="lazy" decoding="async">
+                <div class="screen screen--phone" data-quad="1638,599.5 1917,597 1841,1184 1563,1166" data-src-w="804" data-src-h="1748">
+                  <img class="is-active" src="assets/img/uv-dnes.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
+                  <img src="assets/img/uv-tyden.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
+                  <img src="assets/img/uv-detail.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <div class="work__caption wrap" data-reveal>
+          <div class="work__title">
+            <h2 class="work__name" id="ck-name">Cookpit</h2>
+            <p class="work__kind">Vlastní aplikace pro iPhone, brzy v&nbsp;App Storu</p>
+          </div>
+          <div class="work__body">
+            <p>Aplikace, která plánuje večeře na týden podle akcí v&nbsp;obchodech a&nbsp;zásob, které máte doma.</p>
+            <ul class="work__facts">
+              <li>467 receptů v&nbsp;databázi</li>
+              <li>Akce z&nbsp;11 obchodů a&nbsp;e-shopů</li>
+            </ul>
+            <a class="link" href="https://cookpit.spaicestudio.cz/" target="_blank" rel="noopener">cookpit.spaicestudio.cz<span class="arrow arrow--out" aria-hidden="true"></span></a>
+          </div>
+        </div>
+        <ul class="screens wrap" aria-label="Obrazovky aplikace Cookpit">
+          <li class="screens__item" data-reveal>
+            <div class="phone"><div class="phone__screen"><img src="assets/img/uv-dnes.webp" alt="Obrazovka Dnes: tip na večeři s časem přípravy, cenou za porci a počtem porcí." width="900" height="1957" loading="lazy" decoding="async"></div></div>
+            <h3>Dnešní večeře</h3>
+            <p>Jeden tip na večeři. Hned vidíte čas přípravy, cenu za porci i&nbsp;počet porcí.</p>
+          </li>
+          <li class="screens__item" data-reveal style="--d:.08s">
+            <div class="phone"><div class="phone__screen"><img src="assets/img/uv-tyden.webp" alt="Obrazovka Týden: jídelníček, cena nákupu, rozpočet a úspora díky akcím." width="900" height="1957" loading="lazy" decoding="async"></div></div>
+            <h3>Večeře na celý týden</h3>
+            <p>Jídelníček podle akcí v&nbsp;obchodech a&nbsp;zásob doma. S&nbsp;cenou týdenního nákupu, rozpočtem a&nbsp;přehledem úspor díky akcím.</p>
+          </li>
+          <li class="screens__item" data-reveal style="--d:.16s">
+            <div class="phone"><div class="phone__screen"><img src="assets/img/uv-detail.webp" alt="Detail receptu: suroviny, cena za porci podle dnešních akcí a postup." width="900" height="1957" loading="lazy" decoding="async"></div></div>
+            <h3>Recept krok za krokem</h3>
+            <p>Suroviny, cena za porci podle dnešních akcí a&nbsp;postup. Při vaření vidíte vždy jeden krok, potřebné suroviny a&nbsp;časovač.</p>
+          </li>
+        </ul>
+      </article>
+
+      <article class="work work--bleed" id="gentlemens-garage" aria-labelledby="gg-name">
+        <figure class="work__media" aria-hidden="true">
+          <div class="work__frame" style="--focus-x:.26;--focus-y:.46">
+            <div class="work__zoom">
+              <div class="stage" data-stage data-w="2752" data-h="1536" data-interval="6400">
+                <img class="stage__bg" src="assets/img/scene-gg-2048.webp" srcset="assets/img/scene-gg-1200.webp 1200w, assets/img/scene-gg-2048.webp 2048w" sizes="(max-width: 900px) 700px, 100vw" width="2752" height="1536" alt="" loading="lazy" decoding="async">
+                <div class="screen screen--laptop" data-quad="350,468 1027,492 1075,915 380,960" data-src-w="1440" data-src-h="900">
+                  <img class="is-active" src="assets/img/screen-gg.webp" alt="" width="1440" height="900" loading="lazy" decoding="async">
+                  <img src="assets/img/screen-gg-2.webp" alt="" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <div class="work__caption wrap" data-reveal>
+          <div class="work__title">
+            <h2 class="work__name" id="gg-name">Gentlemen's Garage</h2>
+            <p class="work__kind">Web pro klienta, 2026</p>
+          </div>
+          <div class="work__body">
+            <p>Autoservis a&nbsp;servis <span class="nowrap">Harley-Davidson</span> u&nbsp;Prahy. Vytvořili jsme web s&nbsp;online rezervacemi a&nbsp;interní systém pro správu zakázek.</p>
+            <ul class="work__facts">
+              <li>Web</li>
+              <li>Rezervace</li>
+              <li>CRM</li>
+            </ul>
+            <a class="link" href="https://www.gentlemensgarage.cz/" target="_blank" rel="noopener">gentlemensgarage.cz<span class="arrow arrow--out" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work work--contained" id="jj-barber-shop" aria-labelledby="jj-name">
+        <figure class="work__media wrap" aria-hidden="true">
+          <div class="work__frame" style="--focus-x:.73;--focus-y:.57">
+            <div class="work__zoom">
+              <div class="stage" data-stage data-w="2752" data-h="1536" data-interval="6400">
+                <img class="stage__bg" src="assets/img/scene-jj-2048.webp" srcset="assets/img/scene-jj-1200.webp 1200w, assets/img/scene-jj-2048.webp 2048w" sizes="(max-width: 900px) 700px, 90vw" width="2752" height="1536" alt="" loading="lazy" decoding="async">
+                <div class="screen screen--laptop" data-quad="1587,565 2479,555 2448,1211 1523,1161" data-src-w="1440" data-src-h="900">
+                  <img class="is-active" src="assets/img/screen-jj.webp" alt="" width="1440" height="900" loading="lazy" decoding="async">
+                  <img src="assets/img/screen-jj-2.webp" alt="" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <div class="work__caption wrap" data-reveal>
+          <div class="work__title">
+            <h2 class="work__name" id="jj-name">J&amp;J Barber Shop</h2>
+            <p class="work__kind">Web pro klienta</p>
+          </div>
+          <div class="work__body">
+            <p>Barbershop se dvěma pobočkami na Praze&nbsp;10. Vytvořili jsme web s&nbsp;rezervacemi pro obě pobočky, ceníkem a&nbsp;dárkovými poukazy.</p>
+            <ul class="work__facts">
+              <li>Web</li>
+              <li>Rezervace</li>
+              <li>Poukazy</li>
+            </ul>
+            <a class="link" href="https://www.jjbarbershop.cz/" target="_blank" rel="noopener">jjbarbershop.cz<span class="arrow arrow--out" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Služby: čistý typografický přehled -->
+    <section class="services wrap" id="sluzby" aria-labelledby="sv-title">
+      <h2 class="headline" id="sv-title" data-reveal>Co pro vás uděláme</h2>
+      <div class="services__rows">
+        <article class="service" data-reveal>
+          <h3 class="service__name">Weby</h3>
+          <p class="service__text"><strong>Přehledné weby. Rychlé načítání.</strong> Navrhujeme a&nbsp;stavíme firemní weby, e-shopy i&nbsp;webové aplikace. Řešíme rozložení obsahu, rychlost načítání a&nbsp;základní nastavení pro vyhledávače.</p>
+          <ul class="service__list">
+            <li>Firemní a prezentační weby</li>
+            <li>E-shopy</li>
+            <li>Webové aplikace podle zadání</li>
+            <li>Redakční systém pro obsah</li>
+            <li>Rychlost a základy SEO</li>
+            <li>Měření návštěvnosti</li>
+          </ul>
+        </article>
+        <article class="service" data-reveal>
+          <h3 class="service__name">Aplikace</h3>
+          <p class="service__text"><strong>Od návrhu aplikace po vydání.</strong> Navrhujeme a&nbsp;vyvíjíme aplikace pro iPhone a&nbsp;Android. Od obrazovek a&nbsp;ovládání přes přihlášení či platby až po vydání v&nbsp;App Storu a&nbsp;Google Play.</p>
+          <ul class="service__list">
+            <li>Aplikace pro iPhone a Android</li>
+            <li>Návrh obrazovek a ovládání</li>
+            <li>Účty a přihlášení</li>
+            <li>Platby a předplatné</li>
+            <li>Upozornění a režim bez připojení</li>
+            <li>Vydání v App Storu a Google Play</li>
+          </ul>
+        </article>
+        <article class="service" data-reveal>
+          <h3 class="service__name">Správa webů</h3>
+          <p class="service__text"><strong>O&nbsp;web se staráme i&nbsp;po spuštění.</strong> Aktualizujeme web, zálohujeme ho a&nbsp;hlídáme dostupnost. Postaráme se také o&nbsp;zabezpečení, hosting, domény a&nbsp;drobné úpravy obsahu.</p>
+          <ul class="service__list">
+            <li>Aktualizace a zálohy</li>
+            <li>Hlídání dostupnosti</li>
+            <li>Zabezpečení a certifikáty</li>
+            <li>Drobné úpravy obsahu</li>
+            <li>Hosting a domény</li>
+            <li>Pravidelný přehled</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Kontakt: poptávka jako věta -->
+    <section class="contact" id="kontakt" aria-labelledby="ct-title">
+      <div class="wrap">
+        <h2 class="headline" id="ct-title" data-reveal>Proberme váš projekt.</h2>
+        <p class="contact__lead" data-reveal style="--d:.06s">Vyberte, co potřebujete, a&nbsp;napište pár slov o&nbsp;projektu. Z&nbsp;údajů připravíme poptávku k&nbsp;odeslání e-mailem.</p>
+
+        <form class="letter" data-config novalidate>
+          <p class="letter__text">
+            Dobrý den, jmenuji se
+            <label class="sr-only" for="f-name">Jméno</label><input class="blank" id="f-name" name="jmeno" type="text" autocomplete="name" placeholder="jméno a příjmení" required aria-describedby="e-name">
+            a&nbsp;potřebuji
+            <span class="picks" role="group" aria-label="Co potřebujete" aria-describedby="e-typ">
+              <label class="pick"><input type="checkbox" name="typ" value="web"><span>web</span></label>,
+              <label class="pick"><input type="checkbox" name="typ" value="aplikaci"><span>aplikaci</span></label>
+              nebo
+              <label class="pick"><input type="checkbox" name="typ" value="správu webu"><span>správu webu</span></label>.
+            </span>
+            Ozvěte se mi na
+            <label class="sr-only" for="f-mail">E-mail</label><input class="blank" id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="váš e-mail" required aria-describedby="e-mail">.
+          </p>
+          <div class="letter__errors" aria-live="polite">
+            <p class="field__error" id="e-name" data-error="jmeno"></p>
+            <p class="field__error" id="e-typ" data-error="typ"></p>
+            <p class="field__error" id="e-mail" data-error="email"></p>
+          </div>
+
+          <div class="letter__message">
+            <label for="f-msg">Pár slov o&nbsp;projektu</label>
+            <textarea id="f-msg" name="zprava" rows="4" aria-describedby="h-msg"></textarea>
+            <p class="field__hint" id="h-msg">Komu má web nebo aplikace sloužit, co má umět a&nbsp;co potřebujete vyřešit.</p>
+          </div>
+
+          <div class="letter__submit">
+            <button class="btn btn--solid btn--lg" type="submit">Připravit e-mail<span class="arrow" aria-hidden="true"></span></button>
+            <p class="letter__note">Tlačítko otevře poptávku ve vašem e-mailovém programu. Tam ji zkontrolujete a&nbsp;odešlete.</p>
+          </div>
+          <p class="letter__done" role="status" data-config-done hidden>Poptávku odešlete ve svém e-mailovém programu. Pokud se neotevřel, zkontrolujte jeho nastavení.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner wrap">
+      <a class="logo logo--footer" href="#top" aria-label="spaice studio, na začátek stránky">spa<span class="logo__i">ı</span>ce</a>
+      <p class="footer__tag">Studio pro weby a&nbsp;mobilní aplikace</p>
+      <nav class="footer__nav" aria-label="Patička">
+        <a href="#prace">Práce</a>
+        <a href="#sluzby">Služby</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a class="footer__mail" href="mailto:ahoj@spaicestudio.cz">ahoj@spaicestudio.cz</a>
+      <p class="footer__copy">© 2026 spaice studio</p>
+    </div>
+  </footer>
+</body>
+</html>

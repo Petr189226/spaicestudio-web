@@ -1,0 +1,18 @@
+# Web spaicestudio.cz. Do repozitáře patří jen soubory webu.
+# Ostatní složky (cookpit, podklady pro GPT, další weby) mají vlastní repozitáře nebo se nenasazují.
+/*
+!/.gitignore
+!/.nojekyll
+!/CNAME
+!/README.md
+!/404.html
+!/index.html
+!/robots.txt
+!/sitemap.xml
+!/favicon.ico
+!/favicon.svg
+!/apple-touch-icon.png
+!/assets/
+!/prace/
+!/tools/
+.DS_Store
