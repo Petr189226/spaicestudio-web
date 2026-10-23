@@ -42,7 +42,13 @@ Lokálně stejně jako na Railway: `docker build -t spaice . && docker run -e PO
 
 ## E-maily
 
-Adresy `ahoj@spaicestudio.cz` (web studia) a `cookpit@spaicestudio.cz` (podpora aplikace) zatím nic nepřijímají, doména nemá MX záznamy. Nejjednodušší je **Cloudflare → Email → Email Routing**: zapnout pro `spaicestudio.cz` (MX a SPF přidá sám) a obě adresy přeposílat do vlastní schránky.
+**Cloudflare → Email → Email Routing** je pro `spaicestudio.cz` zapnutý (MX, SPF a DKIM přidal Cloudflare sám).
+
+| Adresa | Kam se přeposílá |
+|---|---|
+| `ahoj@spaicestudio.cz` | `petr.chajda@seznam.cz` |
+
+`cookpit@spaicestudio.cz` a `jetopodvod@spaicestudio.cz` zatím pravidlo nemají; přidává se v **Email Routing → Routing rules → Create routing rule**.
 
 ## Po spuštění
 
