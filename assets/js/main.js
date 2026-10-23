@@ -182,6 +182,7 @@
     const measure = () => {
       const pan = Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
       reel.style.setProperty('--pan', `${pan}px`);
+      reel.classList.toggle('is-static', pan < 40);
     };
     measure();
     new ResizeObserver(measure).observe(track);
