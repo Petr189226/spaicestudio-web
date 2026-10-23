@@ -53,6 +53,90 @@
     window.matchMedia('(min-width: 901px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
   }
 
+  /* Navigace: polička s našimi aplikacemi. Myší se otevře najetím, jinak klepnutím. */
+  const apps = $('[data-apps]');
+  const appsToggle = $('[data-apps-toggle]');
+  if (nav && apps && appsToggle) {
+    const hover = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const rows = $$('.app', apps);
+    const shots = $$('.apps__preview img', apps);
+    const after = appsToggle.nextElementSibling;
+    let open = false;
+    let openTimer = null;
+    let closeTimer = null;
+    let hiddenTimer = null;
+    let openedAt = 0;
+    let scrollStart = 0;
+
+    const preview = (i) => {
+      rows.forEach((r, k) => r.classList.toggle('is-current', k === i));
+      shots.forEach((img, k) => img.classList.toggle('is-active', k === i));
+    };
+    const setApps = (next) => {
+      clearTimeout(openTimer);
+      clearTimeout(closeTimer);
+      clearTimeout(hiddenTimer);
+      if (next === open) return;
+      open = next;
+      appsToggle.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('has-apps', open);
+      if (open) {
+        preview(0);
+        apps.hidden = false;
+        openedAt = Date.now();
+        scrollStart = window.scrollY;
+        // Panel se vysune až po vykreslení, jinak by se přechod nespustil
+        requestAnimationFrame(() => requestAnimationFrame(() => { if (open) apps.classList.add('is-open'); }));
+      } else {
+        apps.classList.remove('is-open');
+        hiddenTimer = setTimeout(() => { if (!open) apps.hidden = true; }, reducedMotion.matches ? 0 : 450);
+      }
+    };
+
+    appsToggle.addEventListener('click', () => {
+      // Klepnutí hned po otevření najetím panel nechá otevřený
+      if (open && Date.now() - openedAt < 500) return;
+      setApps(!open);
+    });
+    appsToggle.addEventListener('pointerenter', () => {
+      if (!hover.matches || open) return;
+      openTimer = setTimeout(() => setApps(true), 120);
+    });
+    appsToggle.addEventListener('pointerleave', () => { if (!open) clearTimeout(openTimer); });
+    nav.addEventListener('pointerenter', () => clearTimeout(closeTimer));
+    nav.addEventListener('pointerleave', () => {
+      if (hover.matches && open) closeTimer = setTimeout(() => setApps(false), 250);
+    });
+    rows.forEach((row, i) => {
+      row.addEventListener('pointerenter', () => preview(i));
+      row.addEventListener('focus', () => preview(i));
+    });
+    nav.addEventListener('focusout', (e) => { if (open && !nav.contains(e.relatedTarget)) setApps(false); });
+    document.addEventListener('click', (e) => { if (open && !nav.contains(e.target)) setApps(false); });
+    window.addEventListener('scroll', () => {
+      if (open && Math.abs(window.scrollY - scrollStart) > 40) setApps(false);
+    }, { passive: true });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && open) { setApps(false); appsToggle.focus(); }
+    });
+    // Polička leží v kódu až za navigací: Tab z tlačítka vede do ní, šipky mezi aplikacemi, z poslední zpět na Služby
+    appsToggle.addEventListener('keydown', (e) => {
+      if ((e.key === 'ArrowDown' || (e.key === 'Tab' && !e.shiftKey && open)) && rows.length) {
+        e.preventDefault();
+        setApps(true);
+        rows[0].focus();
+      }
+    });
+    apps.addEventListener('keydown', (e) => {
+      const i = rows.indexOf(document.activeElement);
+      if (i < 0) return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); rows[Math.min(i + 1, rows.length - 1)].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); (i === 0 ? appsToggle : rows[i - 1]).focus(); }
+      else if (e.key === 'Tab' && e.shiftKey && i === 0) { e.preventDefault(); appsToggle.focus(); }
+      else if (e.key === 'Tab' && !e.shiftKey && i === rows.length - 1 && after) { e.preventDefault(); setApps(false); after.focus(); }
+    });
+  }
+
   /* Scény: fotka v pevných souřadnicích, na displeje se napasují skutečné screenshoty */
 
   // Homografie: obdélník screenshotu -> čtyři rohy displeje na fotce
@@ -175,21 +259,6 @@
     reveals.forEach((el) => el.classList.add('is-in'));
   }
 
-  /* MojeTripy: délka vodorovného posunu pásu */
-  const reel = $('[data-reel]');
-  const track = $('[data-reel-track]');
-  if (reel && track) {
-    const measure = () => {
-      const pan = Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
-      reel.style.setProperty('--pan', `${pan}px`);
-      reel.classList.toggle('is-static', pan < 40);
-    };
-    measure();
-    new ResizeObserver(measure).observe(track);
-    window.addEventListener('resize', measure);
-    $$('img', track).forEach((img) => img.complete || img.addEventListener('load', measure, { once: true }));
-  }
-
   /* Kontakt: poptávka jako věta */
   const form = $('[data-config]');
   if (form) {
@@ -219,10 +288,10 @@
 
     const validate = (v) => {
       const errors = {};
-      if (!v.jmeno) errors.jmeno = 'Vyplňte své jméno.';
-      if (!v.typ.length) errors.typ = 'Vyberte alespoň jednu službu.';
-      if (!v.email) errors.email = 'Vyplňte svůj e-mail.';
-      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) errors.email = 'Zkontrolujte e-mailovou adresu.';
+      if (!v.jmeno) errors.jmeno = 'Napište, jak vám máme říkat.';
+      if (!v.typ.length) errors.typ = 'Zaškrtněte web, aplikaci nebo správu webu.';
+      if (!v.email) errors.email = 'Bez e-mailu se vám neozveme.';
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) errors.email = 'V e-mailu je asi překlep.';
       ['jmeno', 'typ', 'email'].forEach((k) => setError(k, errors[k]));
       return errors;
     };

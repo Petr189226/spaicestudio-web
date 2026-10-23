@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>J&amp;J Barber Shop | spaice studio</title>
-  <meta name="description" content="Barbershop se dvěma pobočkami na Praze 10. Vytvořili jsme web s rezervacemi pro obě pobočky, ceníkem a dárkovými poukazy.">
+  <title>Web pro J&amp;J Barber Shop | spaice studio</title>
+  <meta name="description" content="Barbershop ve Vršovicích a Strašnicích. Každá pobočka má na webu vlastní rezervace, k tomu ceník ve stylu účtenky a dárkové poukazy.">
   <link rel="canonical" href="https://spaicestudio.cz/prace/jj-barber-shop/">
   <meta name="theme-color" content="#0a0908">
   <!-- Náhled při sdílení odkazu na tento projekt. Adresy musí být absolutní. -->
@@ -12,8 +12,8 @@
   <meta property="og:site_name" content="spaice studio">
   <meta property="og:locale" content="cs_CZ">
   <meta property="og:url" content="https://spaicestudio.cz/prace/jj-barber-shop/">
-  <meta property="og:title" content="J&amp;J Barber Shop | spaice studio">
-  <meta property="og:description" content="Barbershop se dvěma pobočkami na Praze 10. Vytvořili jsme web s rezervacemi pro obě pobočky, ceníkem a dárkovými poukazy.">
+  <meta property="og:title" content="Web pro J&amp;J Barber Shop | spaice studio">
+  <meta property="og:description" content="Barbershop ve Vršovicích a Strašnicích. Každá pobočka má na webu vlastní rezervace, k tomu ceník ve stylu účtenky a dárkové poukazy.">
   <meta property="og:image" content="https://spaicestudio.cz/assets/img/share-jj-barber-shop.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
@@ -37,10 +37,48 @@
       <a class="logo" href="../../" aria-label="spaice studio, úvodní stránka">spa<span class="logo__i">ı</span>ce</a>
       <nav class="nav__links" aria-label="Hlavní navigace">
         <a href="../../#prace" aria-current="true">Práce</a>
+        <button class="nav__apps" type="button" aria-expanded="false" aria-controls="aplikace" data-apps-toggle>Naše aplikace<span class="nav__plus" aria-hidden="true"></span></button>
         <a href="../../#sluzby">Služby</a>
       </nav>
       <a class="btn btn--sm nav__cta" href="../../#kontakt">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>Menu</button>
+    </div>
+    <div class="apps" id="aplikace" data-apps hidden>
+      <div class="apps__inner wrap">
+        <ul class="apps__list" aria-label="Naše aplikace">
+          <li>
+            <a class="app" href="https://apps.apple.com/cz/app/mojetripy/id6815389423" target="_blank" rel="noopener" data-preview="0">
+              <img class="app__icon" src="../../assets/img/app-mojetripy.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <span class="app__name">MojeTripy</span>
+              <span class="app__desc">Plánovač cest den po dni</span>
+              <span class="app__status">App Store<span class="arrow arrow--out" aria-hidden="true"></span></span>
+            </a>
+          </li>
+          <li>
+            <a class="app" href="https://cookpit.spaicestudio.cz/" data-preview="1">
+              <img class="app__icon" src="../../assets/img/app-cookpit.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <span class="app__name">Cookpit</span>
+              <span class="app__desc">Večeře z&nbsp;akcí na celý týden</span>
+              <span class="app__status">Brzy</span>
+            </a>
+          </li>
+          <li>
+            <a class="app" href="https://jetopodvod.spaicestudio.cz/" data-preview="2">
+              <img class="app__icon" src="../../assets/img/app-jetopodvod.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <span class="app__name">Je to podvod?</span>
+              <span class="app__desc">Prověří zprávu dřív, než kliknete</span>
+              <span class="app__status">Brzy</span>
+            </a>
+          </li>
+        </ul>
+        <div class="apps__preview phone" aria-hidden="true">
+          <div class="phone__screen">
+            <img class="is-active" src="../../assets/img/screen-mt-main.webp" alt="" width="804" height="1748" loading="lazy" decoding="async">
+            <img src="../../assets/img/uv-dnes.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
+            <img src="../../assets/img/app-preview-jetopodvod.webp" alt="" width="900" height="1957" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -48,8 +86,40 @@
     <nav aria-label="Mobilní navigace">
       <a class="menu__link" href="../../#prace">Práce</a>
       <a class="menu__link" href="../../#sluzby">Služby</a>
+      <div class="menu__apps">
+        <p class="menu__label">Naše aplikace</p>
+        <ul aria-label="Naše aplikace">
+          <li>
+            <a class="app" href="https://apps.apple.com/cz/app/mojetripy/id6815389423" target="_blank" rel="noopener">
+              <img class="app__icon" src="../../assets/img/app-mojetripy.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <span class="app__name">MojeTripy</span>
+              <span class="app__desc">Plánovač cest den po dni</span>
+              <span class="app__status">App Store<span class="arrow arrow--out" aria-hidden="true"></span></span>
+            </a>
+          </li>
+          <li>
+            <a class="app" href="https://cookpit.spaicestudio.cz/">
+              <img class="app__icon" src="../../assets/img/app-cookpit.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <span class="app__name">Cookpit</span>
+              <span class="app__desc">Večeře z&nbsp;akcí na celý týden</span>
+              <span class="app__status">Brzy</span>
+            </a>
+          </li>
+          <li>
+            <a class="app" href="https://jetopodvod.spaicestudio.cz/">
+              <img class="app__icon" src="../../assets/img/app-jetopodvod.webp" alt="" width="40" height="40" loading="lazy" decoding="async">
+              <span class="app__name">Je to podvod?</span>
+              <span class="app__desc">Prověří zprávu dřív, než kliknete</span>
+              <span class="app__status">Brzy</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
-    <a class="btn btn--solid btn--lg" href="../../#kontakt">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
+    <div class="menu__foot">
+      <a class="btn btn--solid btn--lg" href="../../#kontakt">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
+      <a class="menu__mail" href="mailto:ahoj@spaicestudio.cz">ahoj@spaicestudio.cz</a>
+    </div>
   </div>
 
   <main id="obsah">
@@ -63,7 +133,7 @@
         <div class="work__frame" style="--focus-x:.73;--focus-y:.57">
           <div class="work__zoom">
             <div class="stage" data-stage data-w="2752" data-h="1536" data-interval="6400">
-              <img class="stage__bg" src="../../assets/img/scene-jj-2048.webp" srcset="../../assets/img/scene-jj-1200.webp 1200w, ../../assets/img/scene-jj-2048.webp 2048w" sizes="(max-width: 900px) 700px, 100vw" width="2752" height="1536" alt="" fetchpriority="high" decoding="async">
+              <img class="stage__bg" src="../../assets/img/scene-jj-2048.webp" srcset="../../assets/img/scene-jj-1200.webp 1200w, ../../assets/img/scene-jj-2048.webp 2048w, ../../assets/img/scene-jj-2752.webp 2752w" sizes="(max-width: 900px) 700px, 100vw" width="2752" height="1536" alt="" fetchpriority="high" decoding="async">
               <div class="screen screen--laptop" data-quad="1587,565 2479,555 2448,1211 1523,1161" data-src-w="1440" data-src-h="900">
                   <img class="is-active" src="../../assets/img/screen-jj.webp" alt="" width="1440" height="900" decoding="async">
                   <img src="../../assets/img/screen-jj-2.webp" alt="" width="1440" height="900" loading="lazy" decoding="async">
@@ -74,14 +144,17 @@
       </figure>
 
       <div class="case__body wrap">
-        <p class="case__lead" data-reveal>Barbershop se dvěma pobočkami na Praze&nbsp;10. Vytvořili jsme web s&nbsp;rezervacemi pro obě pobočky, ceníkem a&nbsp;dárkovými poukazy.</p>
+        <div class="case__text" data-reveal>
+          <p class="case__lead">Barbershop ve Vršovicích a&nbsp;Strašnicích. Každá pobočka má na webu vlastní rezervace, k&nbsp;tomu ceník ve stylu účtenky a&nbsp;dárkové poukazy.</p>
+          <p class="case__more">Čtrnáct lidí v&nbsp;týmu a&nbsp;dvě pobočky, Vršovická a&nbsp;Černokostelecká. Ceník jsme pojali jako účtenku: mytí, masáž hlavy a&nbsp;styling jsou v&nbsp;ceně střihu.</p>
+        </div>
         <div class="case__side" data-reveal style="--d:.08s">
           <ul class="work__facts">
             <li>Web</li>
             <li>Rezervace</li>
             <li>Poukazy</li>
           </ul>
-          <a class="link" href="https://www.jjbarbershop.cz/" target="_blank" rel="noopener">jjbarbershop.cz<span class="arrow arrow--out" aria-hidden="true"></span></a>
+          <a class="link link--url" href="https://www.jjbarbershop.cz/" target="_blank" rel="noopener">jjbarbershop.cz<span class="arrow arrow--out" aria-hidden="true"></span></a>
         </div>
       </div>
       <div class="shots wrap">
@@ -105,7 +178,7 @@
 
     <section class="cta" aria-labelledby="cta-title">
       <div class="wrap">
-        <h2 class="headline" id="cta-title" data-reveal>Proberme váš projekt.</h2>
+        <h2 class="headline" id="cta-title">Postavíme i&nbsp;ten váš.</h2>
         <a class="btn btn--solid btn--lg" href="../../#kontakt" data-reveal style="--d:.06s">Probrat projekt<span class="arrow" aria-hidden="true"></span></a>
       </div>
     </section>
@@ -121,7 +194,7 @@
         <a href="../../#kontakt">Kontakt</a>
       </nav>
       <a class="footer__mail" href="mailto:ahoj@spaicestudio.cz">ahoj@spaicestudio.cz</a>
-      <p class="footer__copy">© 2026 spaice studio</p>
+      <p class="footer__copy">©&nbsp;2026 spaice studio. Petr Chajda, IČO 23250607, Průběžná 1033/4, 100&nbsp;00 Praha&nbsp;10</p>
     </div>
   </footer>
 </body>
