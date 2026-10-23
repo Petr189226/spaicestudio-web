@@ -22,7 +22,7 @@ Weby běží na Railway v projektu **spaicestudio.cz** (workspace petr189226), s
 | `web` | [`spaicestudio-web`](https://github.com/Petr189226/spaicestudio-web) (tato složka) | `spaicestudio.cz`, `www` přesměruje bez `www` |
 | `cookpit` | [`cookpit-web`](https://github.com/Petr189226/cookpit-web) (`cookpit/`) | `cookpit.spaicestudio.cz` |
 
-Každý push do `main` web znovu nasadí. Do obrazu jdou jen soubory, které Git sleduje (viz `.gitignore`).
+Každý push do `main` web znovu nasadí. Obrázky drží Cloudflare v mezipaměti až den, proto upravený obrázek ulož pod **novým názvem** (například s datem `mt-den-2610.webp`), jinak se návštěvníkům ještě ukazuje ten starý. Do obrazu jdou jen soubory, které Git sleduje (viz `.gitignore`).
 
 DNS v Cloudflare. Proxy je zapnutá (oranžový mráček): HTTPS obsluhuje certifikát Cloudflare pro `spaicestudio.cz` a `*.spaicestudio.cz` a režim SSL je „Full“, takže se Cloudflare k Railway připojí i bez certifikátu Railway. Railway vlastní certifikáty kvůli limitu Let's Encrypt z doby přepínání nevydal. Proxy tomu nevadí, pro jistotu ho nevypínej, dokud Railway u domén neukáže platný certifikát.
 

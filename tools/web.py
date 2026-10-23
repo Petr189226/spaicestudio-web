@@ -32,10 +32,10 @@ def phone(src, alt, w=804, h=1748):
 
 
 # Obrazovky aplikací
-MT_TRIP = phone('screen-mt-trip.webp', 'MojeTripy, přehled cesty Řím bez front: mapa se zastávkami, termín a příprava.')
-MT_DAY = phone('screen-mt-den.webp', 'MojeTripy, první den v Římě: časová osa s Koloseem, obědem a přesuny pěšky.')
-MT_MAP = phone('screen-mt-mapa.webp', 'MojeTripy, trasa dne na mapě Říma se čtyřmi zastávkami.')
-MT_MONEY = phone('screen-mt-penize.webp', 'MojeTripy, peníze: cesta vyjde přibližně na 37 200 Kč za dvě osoby.')
+MT_TRIP = phone('mt-trip-2610.webp', 'MojeTripy, přehled cesty Řím bez front: mapa se zastávkami, termín a příprava.')
+MT_DAY = phone('mt-den-2610.webp', 'MojeTripy, první den v Římě: časová osa s Koloseem, obědem a přesuny pěšky.')
+MT_MAP = phone('mt-mapa-2610.webp', 'MojeTripy, trasa dne na mapě Říma se čtyřmi zastávkami.')
+MT_MONEY = phone('mt-penize-2610.webp', 'MojeTripy, peníze: cesta vyjde přibližně na 37 200 Kč za dvě osoby.')
 CP_WEEK = phone('uv-tyden.webp', 'Cookpit, týden: večeře na pět dní, nákup za 583 Kč z rozpočtu 600 Kč a úspora z akcí.', 900, 1957)
 CP_RECIPE = phone('uv-detail.webp', 'Cookpit, recept: špagety s míchanými vejci, cena za porci a suroviny v akci.', 900, 1957)
 CP_TODAY = phone('uv-dnes.webp', 'Cookpit, dnes: tip na večeři s časem přípravy, cenou za porci a počtem porcí.', 900, 1957)
@@ -105,7 +105,7 @@ APPS = [  # APPS.MT, APPS.CP, APPS.JTP
     ('https://cookpit.spaicestudio.cz/', False, 'app-cookpit.webp', 'Cookpit', 'Večeře na týden', 'Před vydáním'),
     ('https://jetopodvod.spaicestudio.cz/', False, 'app-jetopodvod.webp', 'Je to podvod?', 'Podezřelé zprávy a&nbsp;odkazy', 'Před vydáním'),
 ]
-APP_PREVIEWS = [('screen-mt-main.webp', 804, 1748), ('uv-dnes.webp', 900, 1957), ('app-preview-jetopodvod.webp', 900, 1957)]
+APP_PREVIEWS = [('mt-main-2610.webp', 804, 1748), ('uv-dnes.webp', 900, 1957), ('app-preview-jetopodvod.webp', 900, 1957)]
 
 OUT = '<span class="arrow arrow--out" aria-hidden="true"></span>'
 
