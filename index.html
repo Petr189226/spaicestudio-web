@@ -37,9 +37,9 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/img/hero-showroom-2048.webp" imagesrcset="assets/img/hero-showroom-1200.webp 1200w, assets/img/hero-showroom-2048.webp 2048w, assets/img/hero-showroom-3840.webp 3840w" imagesizes="(max-width: 900px) 940px, 112vw">
+  <link rel="preload" as="image" href="assets/img/hero-showroom-2048.webp" imagesrcset="assets/img/hero-showroom-1200.webp 1200w, assets/img/hero-showroom-2048.webp 2048w, assets/img/hero-showroom-3840.webp 3840w" imagesizes="(max-width: 600px) 680px, (max-width: 900px) 940px, 112vw">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.spaiceReady)document.documentElement.classList.add('no-script-run')},3000)</script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
@@ -142,7 +142,7 @@
     <section class="hero" id="top" aria-labelledby="hero-title" data-top>
       <div class="hero__media" aria-hidden="true">
         <div class="stage" data-stage data-w="2752" data-h="1536">
-          <img class="stage__bg" src="assets/img/hero-showroom-2048.webp" srcset="assets/img/hero-showroom-1200.webp 1200w, assets/img/hero-showroom-2048.webp 2048w, assets/img/hero-showroom-3840.webp 3840w" sizes="(max-width: 900px) 940px, 112vw" width="2752" height="1536" alt="" fetchpriority="high" decoding="async">
+          <img class="stage__bg" src="assets/img/hero-showroom-2048.webp" srcset="assets/img/hero-showroom-1200.webp 1200w, assets/img/hero-showroom-2048.webp 2048w, assets/img/hero-showroom-3840.webp 3840w" sizes="(max-width: 600px) 680px, (max-width: 900px) 940px, 112vw" width="2752" height="1536" alt="" fetchpriority="high" decoding="async">
           <div class="screen screen--laptop" data-quad="1438,550 2176.5,535 2141.5,1070 1384.5,1045" data-src-w="1440" data-src-h="900">
             <img class="is-active" src="assets/img/screen-gg.webp" alt="" width="1440" height="900" decoding="async">
             <img src="assets/img/screen-jj.webp" alt="" width="1440" height="900" decoding="async">
@@ -399,7 +399,7 @@
         <h2 class="headline" id="ct-title">Proberme váš projekt.</h2>
         <p class="contact__lead" data-reveal style="--d:.06s">Zaškrtněte, co potřebujete, a&nbsp;připište pár vět. Ozveme se vám osobně a&nbsp;probereme, co dál.</p>
 
-        <form class="letter" data-config novalidate>
+        <form class="letter" data-config novalidate action="mailto:ahoj@spaicestudio.cz" method="post" enctype="text/plain">
           <p class="letter__text">
             Dobrý den, jmenuji se
             <label class="sr-only" for="f-name">Jméno</label><input class="blank" id="f-name" name="jmeno" type="text" autocomplete="name" placeholder="jméno a&nbsp;příjmení" required aria-describedby="e-name">
@@ -411,7 +411,7 @@
               <label class="pick"><input type="checkbox" name="typ" value="správu webu"><span>správu webu</span></label>.
             </span>
             Ozvěte se mi na
-            <label class="sr-only" for="f-mail">E-mail</label><input class="blank" id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="váš e-mail" required aria-describedby="e-mail">.
+            <label class="sr-only" for="f-mail">E-mail</label><input class="blank" id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="váš e-mail" required aria-describedby="e-mail"><span class="nowrap">.</span>
           </p>
           <div class="letter__errors" aria-live="polite">
             <p class="field__error" id="e-name" data-error="jmeno"></p>

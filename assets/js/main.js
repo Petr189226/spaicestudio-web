@@ -1,4 +1,5 @@
 (() => {
+  window.spaiceReady = true;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -43,6 +44,7 @@
       menuToggle.textContent = open ? 'Zavřít' : 'Menu';
       nav.classList.toggle('is-open', open);
       document.body.style.overflow = open ? 'hidden' : '';
+      $$('main, footer, .skip').forEach((el) => { el.inert = open; });
       if (open) $('a', menu).focus();
     };
     menuToggle.addEventListener('click', () => setOpen(menu.hidden));
@@ -199,6 +201,7 @@
       const x = Math.min(0, Math.max(bw - W * s, bw / 2 - fx * W * s));
       const y = Math.min(0, Math.max(bh - H * s, bh / 2 - fy * H * s));
       stage.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${s})`;
+      stage.classList.add('is-fit');
     };
     fit();
     new ResizeObserver(fit).observe(box);
@@ -318,7 +321,7 @@
         ...(v.zprava ? ['', v.zprava] : []),
         '',
         v.jmeno,
-      ].join('\n');
+      ].join('\r\n');
       window.location.href = `mailto:${STUDIO_MAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       done.hidden = false;
     });

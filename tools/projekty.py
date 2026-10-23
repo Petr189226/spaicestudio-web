@@ -96,17 +96,17 @@ REEL = '''      <div class="reel" data-reel>
 SCREENS = '''      <ul class="screens wrap" aria-label="Obrazovky aplikace Cookpit">
         <li class="screens__item" data-reveal>
           <div class="phone"><div class="phone__screen"><img src="{A}uv-dnes.webp" alt="Obrazovka Dnes: tip na večeři s časem přípravy, cenou za porci a počtem porcí." width="900" height="1957" loading="lazy" decoding="async"></div></div>
-          <h3>Dnešní večeře</h3>
+          <h2>Dnešní večeře</h2>
           <p>Jeden tip na večeři. Hned vidíte čas přípravy, cenu za porci i&nbsp;počet porcí.</p>
         </li>
         <li class="screens__item" data-reveal style="--d:.08s">
           <div class="phone"><div class="phone__screen"><img src="{A}uv-tyden.webp" alt="Obrazovka Týden: jídelníček, cena nákupu, rozpočet a úspora díky akcím." width="900" height="1957" loading="lazy" decoding="async"></div></div>
-          <h3>Večeře na celý týden</h3>
+          <h2>Večeře na celý týden</h2>
           <p>Jídelníček na celý týden. Hned vidíte, kolik stojí nákup, jestli se vejdete do rozpočtu a&nbsp;kolik ušetříte na akcích.</p>
         </li>
         <li class="screens__item" data-reveal style="--d:.16s">
           <div class="phone"><div class="phone__screen"><img src="{A}uv-detail.webp" alt="Detail receptu: suroviny, cena za porci podle dnešních akcí a postup." width="900" height="1957" loading="lazy" decoding="async"></div></div>
-          <h3>Recept krok za krokem</h3>
+          <h2>Recept krok za krokem</h2>
           <p>Cena za porci podle dnešních akcí, suroviny a&nbsp;postup. Při vaření máte na displeji jen jeden krok a&nbsp;u&nbsp;něj časovač.</p>
         </li>
       </ul>
@@ -151,7 +151,7 @@ PAGE = '''<!doctype html>
   <link rel="preload" href="../../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../assets/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/css/style.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){{if(!window.spaiceReady)document.documentElement.classList.add('no-script-run')}},3000)</script>
   <script src="../../assets/js/main.js" defer></script>
 </head>
 <body>
