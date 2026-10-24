@@ -37,7 +37,8 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="assets/img/hero-showroom-2048.webp" imagesrcset="assets/img/hero-showroom-1200.webp 1200w, assets/img/hero-showroom-2048.webp 2048w, assets/img/hero-showroom-3840.webp 3840w" imagesizes="(max-width: 600px) 680px, (max-width: 900px) 940px, 112vw">
+  <link rel="preload" as="image" href="assets/video/jj-poster-2410.webp" media="(min-width: 600px)">
+  <link rel="preload" as="image" href="assets/video/jjm-poster-2410.webp" media="(max-width: 599px)">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.spaiceReady)document.documentElement.classList.add('no-script-run')},3000)</script>
   <script src="assets/js/main.js" defer></script>
@@ -138,21 +139,8 @@
 
   <main id="obsah">
 
-    <!-- Úvod: showroom, na displejích běží skutečné projekty studia -->
-    <section class="hero" id="top" aria-labelledby="hero-title" data-top>
-      <div class="hero__media" aria-hidden="true">
-        <div class="stage" data-stage data-w="2752" data-h="1536">
-          <img class="stage__bg" src="assets/img/hero-showroom-2048.webp" srcset="assets/img/hero-showroom-1200.webp 1200w, assets/img/hero-showroom-2048.webp 2048w, assets/img/hero-showroom-3840.webp 3840w" sizes="(max-width: 600px) 680px, (max-width: 900px) 940px, 112vw" width="2752" height="1536" alt="" fetchpriority="high" decoding="async">
-          <div class="screen screen--laptop" data-quad="1438,550 2176.5,535 2141.5,1070 1384.5,1045" data-src-w="1440" data-src-h="900">
-            <img class="is-active" src="assets/img/screen-gg.webp" alt="" width="1440" height="900" decoding="async">
-            <img src="assets/img/screen-jj.webp" alt="" width="1440" height="900" decoding="async">
-          </div>
-          <div class="screen screen--phone" data-quad="2273,601.5 2473,602 2430,1002 2221.5,995" data-src-w="804" data-src-h="1748">
-            <img class="is-active" src="assets/img/mt-main-2610.webp" alt="" width="804" height="1748" decoding="async">
-            <img src="assets/img/uv-dnes.webp" alt="" width="900" height="1957" decoding="async">
-          </div>
-        </div>
-      </div>
+    <!-- Úvod: skutečné záznamy webů klientů na počítači i v mobilu. Zdroje videí doplní skript podle šířky okna. -->
+    <section class="hero hero--live" id="top" aria-labelledby="hero-title" data-top>
       <div class="hero__content wrap">
         <p class="meta hero__meta">spaice studio, Praha</p>
         <h1 class="display hero__title" id="hero-title">
@@ -166,16 +154,30 @@
           <a class="link" href="#prace">Práce<span class="arrow" aria-hidden="true"></span></a>
         </div>
       </div>
-      <div class="hero__onscreen">
-        <div class="onscreen">
-          <p class="onscreen__label">Ukázky práce</p>
-          <p class="onscreen__value" data-onscreen-state>Gentlemen’s Garage: <span>web</span> / MojeTripy: <span>aplikace</span></p>
-          <p class="onscreen__value" data-onscreen-state hidden>J&amp;J Barber Shop: <span>web</span> / Cookpit: <span>aplikace</span></p>
+      <div class="live" data-live>
+        <div class="live__glow" aria-hidden="true">
+          <video data-glow muted playsinline disablepictureinpicture preload="none"></video>
         </div>
-        <button class="hero__toggle" type="button" aria-label="Pozastavit střídání projektů" data-cycle-toggle>
-          <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2" height="10"/><rect x="10" y="3" width="2" height="10"/></svg>
-          <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10l8-5z"/></svg>
-        </button>
+        <div class="live__screen">
+          <video class="is-active" data-clip muted playsinline disablepictureinpicture preload="none" poster="assets/video/jj-poster-2410.webp" data-src="assets/video/jj-2410.mp4" data-glow-src="assets/video/jj-glow-2410.mp4" aria-label="Záznam průchodu webem J&amp;J Barber Shop: úvod, pobočky a&nbsp;ceník ve stylu účtenky."></video>
+          <video data-clip muted playsinline disablepictureinpicture preload="none" data-poster="assets/video/gg-poster-2410.webp" data-src="assets/video/gg-2410.mp4" data-glow-src="assets/video/gg-glow-2410.mp4" aria-label="Záznam průchodu webem Gentlemen’s Garage: úvod, služby a&nbsp;ceník."></video>
+        </div>
+        <div class="live__phone" aria-hidden="true">
+          <video class="is-active" data-clip-m muted playsinline disablepictureinpicture preload="none" poster="assets/video/jjm-poster-2410.webp" data-src="assets/video/jjm-2410.mp4"></video>
+          <video data-clip-m muted playsinline disablepictureinpicture preload="none" data-poster="assets/video/ggm-poster-2410.webp" data-src="assets/video/ggm-2410.mp4"></video>
+        </div>
+        <div class="live__bar">
+          <div class="live__segments" role="group" aria-label="Ukázky práce">
+            <button type="button" class="is-active" aria-pressed="true" data-live-pick="0" data-name="J&amp;J Barber Shop" data-what="Web s&nbsp;rezervacemi pro dvě pobočky" data-url="https://www.jjbarbershop.cz/" data-host="jjbarbershop.cz"><span class="sr-only">J&amp;J Barber Shop</span><i></i></button>
+            <button type="button" aria-pressed="false" data-live-pick="1" data-name="Gentlemen’s Garage" data-what="Web, rezervace a&nbsp;systém zakázek" data-url="https://www.gentlemensgarage.cz/" data-host="gentlemensgarage.cz"><span class="sr-only">Gentlemen’s Garage</span><i></i></button>
+          </div>
+          <p class="live__caption" aria-live="polite"><span class="live__name" data-live-name>J&amp;J Barber Shop</span><span class="live__what" data-live-what>Web s&nbsp;rezervacemi pro dvě pobočky</span></p>
+          <a class="live__open link" href="https://www.jjbarbershop.cz/" target="_blank" rel="noopener" data-live-url><span data-live-host>jjbarbershop.cz</span><span class="arrow arrow--out" aria-hidden="true"></span></a>
+          <button class="hero__toggle live__toggle" type="button" aria-label="Pozastavit ukázky" data-live-toggle>
+            <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3" width="2" height="10"/><rect x="10" y="3" width="2" height="10"/></svg>
+            <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10l8-5z"/></svg>
+          </button>
+        </div>
       </div>
     </section>
 

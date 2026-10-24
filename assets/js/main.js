@@ -6,7 +6,6 @@
 
   /* Navigace: podklad po odjetí z úvodu stránky */
   const nav = $('[data-nav]');
-  const hero = $('.hero');
   const top = $('[data-top]');
   if (nav && top) {
     const sentinel = document.createElement('div');
@@ -208,44 +207,126 @@
 
     // Obrazovky se střídají, jen když je scéna vidět
     const count = Math.max(0, ...screens.map((screen) => $$('img', screen).length));
-    const states = stage.closest('.hero') ? $$('[data-onscreen-state]', hero) : [];
-    const toggle = stage.closest('.hero') ? $('[data-cycle-toggle]', hero) : null;
     const every = Number(stage.dataset.interval) || 5200;
     let index = 0;
     let timer = null;
     let visible = false;
-    let paused = reducedMotion.matches;
 
     const show = (i) => {
       index = (i + count) % count;
       screens.forEach((screen) => $$('img', screen).forEach((img, k) => img.classList.toggle('is-active', k === index)));
-      states.forEach((s, k) => { s.hidden = k !== index; });
     };
     const sync = () => {
-      const run = count > 1 && visible && !paused && !document.hidden;
+      const run = count > 1 && visible && !reducedMotion.matches && !document.hidden;
       if (run && !timer) timer = setInterval(() => show(index + 1), every);
       else if (!run && timer) { clearInterval(timer); timer = null; }
     };
-    const label = () => {
-      if (!toggle) return;
-      toggle.classList.toggle('is-paused', paused);
-      toggle.setAttribute('aria-label', paused ? 'Spustit střídání projektů' : 'Pozastavit střídání projektů');
-    };
 
     show(0);
-    label();
     new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }).observe(box);
     document.addEventListener('visibilitychange', sync);
-    if (toggle) {
-      toggle.addEventListener('click', () => {
-        paused = !paused;
-        if (!paused) show(index + 1);
-        label();
-        sync();
-      });
-    }
   };
   $$('[data-stage]').forEach(setupStage);
+
+  /* Úvod: skutečné záznamy webů klientů. Video dostane zdroj, až ho daná šířka okna opravdu ukazuje:
+     telefon nestahuje záznam z počítače, počítač pod 1024 px nestahuje záznam z mobilu. */
+  const live = $('[data-live]');
+  if (live) {
+    const clips = $$('[data-clip]', live);
+    const phones = $$('[data-clip-m]', live);
+    const picks = $$('[data-live-pick]', live);
+    const glow = $('[data-glow]', live);
+    const toggle = $('[data-live-toggle]', live);
+    const wide = window.matchMedia('(min-width: 1024px)');
+    const narrow = window.matchMedia('(max-width: 599px)');
+    let current = 0;
+    let paused = reducedMotion.matches;
+    let visible = true;
+    let warmed = false;
+
+    const needScreen = () => !narrow.matches;
+    const needPhone = () => narrow.matches || wide.matches;
+    // Délku ukázky určuje záznam, který je na dané šířce vidět
+    const lead = (i = current) => (needScreen() ? clips[i] : phones[i]);
+    const has = (v) => Boolean(v && v.getAttribute('src'));
+
+    const load = (v, preload) => {
+      if (v.dataset.poster && !v.getAttribute('poster')) v.poster = v.dataset.poster;
+      if (!has(v)) { v.preload = preload; v.src = v.dataset.src; }
+    };
+    const prepare = (i, preload = 'auto') => {
+      if (needScreen()) load(clips[i], preload);
+      if (needPhone()) load(phones[i], preload);
+    };
+    const syncGlow = () => {
+      if (!glow || reducedMotion.matches) return;
+      const src = clips[current].dataset.glowSrc;
+      if (glow.getAttribute('src') !== src) { glow.preload = 'auto'; glow.src = src; }
+    };
+
+    const run = () => {
+      const active = [clips[current], phones[current], glow].filter(has);
+      if (paused || !visible) { [...clips, ...phones, glow].forEach((v) => v && v.pause()); return; }
+      active.forEach((v) => { if (!(v !== lead() && v !== glow && v.ended)) v.play().catch(() => {}); });
+    };
+
+    const show = (i) => {
+      [...clips, ...phones].forEach((v) => v.pause());
+      current = (i + picks.length) % picks.length;
+      const pick = picks[current];
+      clips.forEach((v, k) => v.classList.toggle('is-active', k === current));
+      phones.forEach((v, k) => v.classList.toggle('is-active', k === current));
+      picks.forEach((b, k) => { b.classList.toggle('is-active', k === current); b.setAttribute('aria-pressed', String(k === current)); });
+      if (!paused) { prepare(current); syncGlow(); }
+      [clips[current], phones[current], glow].filter(has).forEach((v) => { v.currentTime = 0; });
+      $('[data-live-name]', live).textContent = pick.dataset.name;
+      $('[data-live-what]', live).textContent = pick.dataset.what;
+      $('[data-live-url]', live).href = pick.dataset.url;
+      $('[data-live-host]', live).textContent = pick.dataset.host;
+      run();
+    };
+
+    [...clips, ...phones].forEach((v) => {
+      v.muted = true;
+      v.addEventListener('ended', () => { if (v === lead()) show(current + 1); });
+      // Druhý projekt se začne stahovat, až první opravdu hraje
+      v.addEventListener('playing', () => {
+        if (warmed || v !== lead()) return;
+        warmed = true;
+        picks.forEach((_, k) => { if (k !== current) prepare(k, 'auto'); });
+      });
+    });
+    picks.forEach((b, k) => b.addEventListener('click', () => show(k)));
+    toggle.addEventListener('click', () => {
+      paused = !paused;
+      toggle.classList.toggle('is-paused', paused);
+      toggle.setAttribute('aria-label', paused ? 'Spustit ukázky' : 'Pozastavit ukázky');
+      if (!paused) { prepare(current); syncGlow(); }
+      run();
+    });
+    toggle.classList.toggle('is-paused', paused);
+    if (paused) toggle.setAttribute('aria-label', 'Spustit ukázky');
+
+    // Po změně šířky okna se doplní záznamy, které jsou teď vidět
+    [wide, narrow].forEach((mq) => mq.addEventListener('change', () => {
+      if (!paused) prepare(current);
+      if (warmed) picks.forEach((_, k) => prepare(k, 'auto'));
+      run();
+    }));
+
+    // Průběh ukázky; rozmazaná kopie kolem obrazu běží souběžně se záznamem
+    const tick = () => {
+      const v = lead();
+      if (has(v) && v.duration) picks[current].style.setProperty('--p', (v.currentTime / v.duration).toFixed(4));
+      if (has(glow) && !glow.paused && has(v) && Math.abs(glow.currentTime - v.currentTime) > 0.25) glow.currentTime = v.currentTime;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; run(); }, { threshold: 0.15 }).observe(live);
+    document.addEventListener('visibilitychange', () => { visible = !document.hidden; run(); });
+    show(0);
+  }
 
   /* Postupné odkrývání obsahu */
   const reveals = $$('[data-reveal]');
