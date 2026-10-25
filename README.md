@@ -5,11 +5,23 @@ Statický web studia spaice. Bez buildu: co je v repozitáři, to se nasadí.
 | Cesta | Obsah |
 |---|---|
 | `index.html` | hlavní stránka |
-| `prace/<projekt>/` | stránky projektů s vlastním náhledem odkazu (MojeTripy, Cookpit, Gentlemen's Garage, J&J Barber Shop) |
-| `assets/` | styly, skript, písmo Archivo, obrázky (`share*.jpg` jsou náhledy odkazů 1200 × 630) |
+| `prace/<projekt>/` | případové studie s vlastním náhledem odkazu (Gentlemen's Garage, MojeTripy, J&J Barber Shop, Cookpit) |
 | `404.html` | stránka pro neexistující adresy |
+| `assets/` | styly, skript, písmo Archivo, obrázky, videa, logo (`share-*-2510.jpg` jsou náhledy odkazů 1200 × 630) |
+| `assets/logo/` | logo „Kurzor“ na tmavé a světlé ploše, značka, favicon a ikona pro iPhone |
 | `Dockerfile`, `Caddyfile` | nasazení na Railway (viz níže) |
-| `tools/projekty.py` | vygeneruje `prace/*/index.html`. Hlavička a patička jsou stejné jako v `index.html`, po jejich změně skript pusť znovu. |
+| `tools/web.py` | vygeneruje `index.html`, `prace/*/index.html` a `404.html`. Hlavička, menu a patička jsou společné, texty a obrázky se mění tady, ne v HTML. |
+| `tools/logo.py` | nakreslí logo z písma Archivo do `assets/logo/` a cesty pro `tools/web.py` do `tools/logo.json`. Potřebuje `pip install fonttools brotli`. |
+
+Po změně loga z SVG vyrob PNG a ICO (ImageMagick):
+
+```bash
+magick -background none -density 300 assets/logo/spaice-znacka-ctverec.svg -resize 180x180 assets/logo/apple-touch-icon.png
+for z in 16 32 48; do magick -background none -density 300 assets/logo/favicon.svg -resize ${z}x${z} /tmp/fav$z.png; done
+magick /tmp/fav16.png /tmp/fav32.png /tmp/fav48.png assets/logo/favicon.ico
+```
+
+Nové PNG a ICO ulož i pod novým názvem nebo změň odkazy v `tools/web.py`; obrázky drží Cloudflare v mezipaměti až den (viz níže).
 
 Lokální náhled: `python3 -m http.server 4321` a otevřít http://localhost:4321.
 
