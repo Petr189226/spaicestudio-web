@@ -10,6 +10,8 @@ SITE = 'https://spaicestudio.cz'
 APPSTORE = 'https://apps.apple.com/cz/app/mojetripy/id6815389423'
 GPLAY = 'https://play.google.com/store/apps/details?id=cz.mojetripy.app'
 MAIL = 'ahoj@spaicestudio.cz'
+# Cloudflare nechává prohlížečům styly a skript 4 hodiny; po jejich změně zvyš verzi
+VERSION = '2510'
 
 # Logo „Kurzor“ z tools/logo.py: písmena berou barvu textu, kurzor je vždy oranžový
 _L = json.load(open(os.path.join(ROOT, 'tools', 'logo.json'), encoding='utf-8'))
@@ -47,8 +49,8 @@ def head(title, desc, path, share, r, a):
   <link rel="apple-touch-icon" href="{a}assets/logo/apple-touch-icon.png">
   <link rel="preload" href="{a}assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{a}assets/fonts/archivo-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="{a}assets/css/style.css">
-  <script src="{a}assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="{a}assets/css/style.css?v={VERSION}">
+  <script src="{a}assets/js/main.js?v={VERSION}" defer></script>
 </head>
 <body>
 <!--email_off-->
